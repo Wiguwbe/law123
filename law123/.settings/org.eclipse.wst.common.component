@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
+    <wb-module deploy-name="ajius-web-jsp-3.0.0-SNAPSHOT">
+        <wb-resource deploy-path="/" source-path="/target/m2e-wtp/web-resources"/>
+        <wb-resource deploy-path="/" source-path="/src/main/webapp" tag="defaultRootSource"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/java"/>
+        <dependent-module archiveName="alouatta-0.0.1-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/alouatta/alouatta">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="ajius-base-3.0.0-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/ajius-base/ajius-base">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="ajius-batch-3.0.0-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/ajius-batch/ajius-batch">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="ajius-rules-3.0.0-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/ajius-rules/ajius-rules">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="ajius-view-0.0.1-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/ajius-view/ajius-view">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="ubergang-REFACTORING.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/ubergang/ubergang">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <property name="java-output-path" value="/ajius-web-jsp/target/classes"/>
+        <property name="context-root" value="ajius"/>
+        <property name="component.exclusion.patterns"/>
+    </wb-module>
+</project-modules>

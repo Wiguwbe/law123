@@ -292,7 +292,7 @@ public class Vector3 {
 	}
 
 	/** Zero all the components of the vector. */
-	void clear() {
+	public void clear() {
 		x = y = z = 0;
 	}
 

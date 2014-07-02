@@ -22,6 +22,13 @@ public class Matrix4 {
         data[0] = data[5] = data[10] = 1;
     }
     
+    public double[] getData() {
+    	return data;
+    }
+    
+    public void setData(double[] data) {
+    	this.data = data;
+    }
     
     public double getData(int i) {
         return data[i];

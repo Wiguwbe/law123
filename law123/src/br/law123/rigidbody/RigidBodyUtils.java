@@ -1,9 +1,9 @@
 package br.law123.rigidbody;
 
-import br.whatever.core.Matrix3;
-import br.whatever.core.Matrix4;
-import br.whatever.core.Quaternion;
-import br.whatever.core.Vector3;
+import br.law123.core.Matrix3;
+import br.law123.core.Matrix4;
+import br.law123.core.Quaternion;
+import br.law123.core.Vector3;
 
 /**
  * Utilitários para {@link RigidBody}.
