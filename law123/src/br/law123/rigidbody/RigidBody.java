@@ -369,7 +369,7 @@ public abstract class RigidBody {
 	/**
 	 * Returns true if the mass of the body is not-infinite.
 	 */
-	boolean hasFiniteMass() {
+    public boolean hasFiniteMass() {
 		return inverseMass >= 0.0f;
 	}
 

@@ -6,7 +6,7 @@ import br.law123.core.Vector3;
  * The contact resolution routine for particle contacts. One resolver instance
  * can be shared for the whole simulation.
  */
-class ParticleContactResolver {
+public class ParticleContactResolver {
 
     /**
      * Holds the number of iterations allowed.

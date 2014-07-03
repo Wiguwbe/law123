@@ -3,6 +3,7 @@ package br.law123.forcegenerator;
 import java.util.ArrayList;
 import java.util.List;
 
+import br.law123.forcegenerator.particle.ParticleForceGenerator;
 import br.law123.particle.Particle;
 
 

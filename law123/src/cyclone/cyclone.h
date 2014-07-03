@@ -9,7 +9,6 @@
  * implies agreement with all terms and conditions of the accompanying
  * software licence.
  */
-#include "pworld.h"
 #include "collide_fine.h"
 #include "contacts.h"
 #include "fgen.h"

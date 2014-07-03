@@ -1,5 +1,6 @@
 package br.law123.forcegenerator;
 
+import br.law123.forcegenerator.particle.ParticleForceGenerator;
 import br.law123.particle.Particle;
 
 public class ParticleForceRegistration {

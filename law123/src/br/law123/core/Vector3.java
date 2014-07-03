@@ -41,15 +41,6 @@ public class Vector3 {
 		this.z = z;
 	}
 
-	static Vector3 GRAVITY;
-	static Vector3 HIGH_GRAVITY;
-	static Vector3 UP;
-	static Vector3 RIGHT;
-	static Vector3 OUT_OF_SCREEN;
-	static Vector3 X;
-	static Vector3 Y;
-	static Vector3 Z;
-
 	// ... Other Vector3 code as before ...
 
 	public double getX() {

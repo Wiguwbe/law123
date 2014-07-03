@@ -82,24 +82,24 @@ package br.law123.core;
  * names to be simple without causing conflicts.
  */
 public class Core {
-    
+
     private static final Core INSTANCE = new Core();
-    
+
     private Core() {
     }
-    
+
     public static Core get() {
         return INSTANCE;
     }
 
-    final Vector3 GRAVITY = new Vector3(0, -9.81, 0);
-    final Vector3 HIGH_GRAVITY = new Vector3(0, -19.62, 0);
-    final Vector3 UP = new Vector3(0, 1, 0);
-    final Vector3 RIGHT = new Vector3(1, 0, 0);
-    final Vector3 OUT_OF_SCREEN = new Vector3(0, 0, 1);
-    final Vector3 X = new Vector3(0, 1, 0);
-    final Vector3 Y = new Vector3(1, 0, 0);
-    final Vector3 Z = new Vector3(0, 0, 1);
+    public final static Vector3 GRAVITY = new Vector3(0, -9.81, 0);
+    public final static Vector3 HIGH_GRAVITY = new Vector3(0, -19.62, 0);
+    public final static Vector3 UP = new Vector3(0, 1, 0);
+    public final static Vector3 RIGHT = new Vector3(1, 0, 0);
+    public final static Vector3 OUT_OF_SCREEN = new Vector3(0, 0, 1);
+    public final static Vector3 X = new Vector3(0, 1, 0);
+    public final static Vector3 Y = new Vector3(1, 0, 0);
+    public final static Vector3 Z = new Vector3(0, 0, 1);
 
     /**
      * Holds the value for energy under which a body will be put to
