@@ -398,6 +398,7 @@ public abstract class RigidBody {
 	 *            the rigid body. The inertia tensor is expressed in the rigid
 	 *            body's local space.
 	 */
+    @Deprecated
 	public void getInertiaTensor(Matrix3 inertiaTensor) {
 		inertiaTensor.setInverse(inverseInertiaTensor);
 	}
@@ -423,6 +424,7 @@ public abstract class RigidBody {
 	 *            the rigid body. The inertia tensor is expressed in world
 	 *            space.
 	 */
+    @Deprecated
 	public void getInertiaTensorWorld(Matrix3 inertiaTensor) {
 		inertiaTensor.setInverse(inverseInertiaTensorWorld);
 	}
@@ -464,6 +466,7 @@ public abstract class RigidBody {
 	 *            tensor of the rigid body. The inertia tensor is expressed in
 	 *            the rigid body's local space.
 	 */
+    @Deprecated
 	public void getInverseInertiaTensor(Matrix3 inverseInertiaTensor) {
 		inverseInertiaTensor = this.inverseInertiaTensor;
 	}
@@ -487,6 +490,7 @@ public abstract class RigidBody {
 	 *            tensor of the rigid body. The inertia tensor is expressed in
 	 *            world space.
 	 */
+    @Deprecated
 	public void getInverseInertiaTensorWorld(Matrix3 inverseInertiaTensor) {
 		inverseInertiaTensor = this.inverseInertiaTensorWorld;
 	}
@@ -594,6 +598,7 @@ public abstract class RigidBody {
 	 * @param position
 	 *            A pointer to a vector into which to write the position.
 	 */
+    @Deprecated
 	public void getPosition(Vector3 position) {
 		position = this.position;
 	}
@@ -660,6 +665,7 @@ public abstract class RigidBody {
 	 * @param orientation
 	 *            A pointer to a quaternion to receive the orientation data.
 	 */
+    @Deprecated
 	public void getOrientation(Quaternion orientation) {
 		orientation = this.orientation;
 	}
@@ -683,6 +689,7 @@ public abstract class RigidBody {
 	 * @param matrix
 	 *            A pointer to the matrix to fill.
 	 */
+    @Deprecated
 	public void getOrientation(Matrix3 matrix) {
 		getOrientation(matrix.data);
 	}
@@ -721,6 +728,7 @@ public abstract class RigidBody {
 	 * @param transform
 	 *            A pointer to the matrix to fill.
 	 */
+    @Deprecated
 	public void getTransform(Matrix4 transform) {
 		double[] copy = Arrays.copyOf(transformMatrix.getData(),
 				transformMatrix.getData().length);
@@ -885,6 +893,7 @@ public abstract class RigidBody {
 	 *            A pointer to a vector into which to write the velocity. The
 	 *            velocity is given in world local space.
 	 */
+    @Deprecated
 	public void getVelocity(Vector3 velocity) {
 		velocity = this.velocity;
 	}
@@ -943,6 +952,7 @@ public abstract class RigidBody {
 	 *            A pointer to a vector into which to write the rotation. The
 	 *            rotation is given in world local space.
 	 */
+    @Deprecated
 	public void getRotation(Vector3 rotation) {
 		rotation = this.rotation;
 	}
@@ -1065,8 +1075,9 @@ public abstract class RigidBody {
 	 * @param linearAcceleration
 	 *            A pointer to a vector to receive the linear acceleration data.
 	 */
+    @Deprecated
 	public void getLastFrameAcceleration(Vector3 linearAcceleration) {
-		acceleration = this.lastFrameAcceleration;
+        linearAcceleration = this.lastFrameAcceleration;
 	}
 
 	/**
@@ -1202,6 +1213,7 @@ public abstract class RigidBody {
 	 *            A pointer to a vector into which to write the acceleration.
 	 *            The acceleration is given in world local space.
 	 */
+    @Deprecated
 	public void getAcceleration(Vector3 acceleration) {
 		acceleration = this.acceleration;
 	}

@@ -263,7 +263,7 @@ public class Matrix3 {
     /**
      * Multiplies this matrix in place by the given other matrix.
      */
-    void multToMe(Matrix3 o) {
+    public void multToMe(Matrix3 o) {
         double t1;
         double t2;
         double t3;
