@@ -33,7 +33,7 @@ public class GroundContacts //implements ParticleContactGenerator
         for (Particle p : particles) {
 
             double y = p.getPosition().getY();
-            if (y < 0.0f) {
+            if (y < 0.0f) { 
                 contact.setContactNormal(Core.UP);
                 contact.getParticle()[0] = p;
                 contact.getParticle()[1] = null;

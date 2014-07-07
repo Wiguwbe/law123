@@ -161,7 +161,6 @@ class ParticleWorld {
      * 
      * @return
      */
-
     public ParticleForceRegistry getForceRegistry() {
         return registry;
     }
