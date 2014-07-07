@@ -12,7 +12,7 @@ import br.law123.particle.contact.ParticleContactResolver;
  * Keeps track of a set of particles, and provides the means to
  * update them all.
  */
-class ParticleWorld {
+public class ParticleWorld {
 
     /**
      * Holds the particles
@@ -110,7 +110,7 @@ class ParticleWorld {
     /**
      * Processes all the physics for the particle world.
      */
-    void runPhysics(double duration) {
+    public void runPhysics(double duration) {
         // First apply the force generators
         registry.updateForces(duration);
 
@@ -133,7 +133,7 @@ class ParticleWorld {
      * calling this, the particles can have their forces for this
      * frame added.
      */
-    void startFrame() {
+    public void startFrame() {
         for (Particle p : particles) {
             // Remove all forces from the accumulator
             p.clearAccumulator();

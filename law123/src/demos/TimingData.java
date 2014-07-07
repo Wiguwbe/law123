@@ -68,6 +68,10 @@ class TimingData {
         return timingData;
     }
 
+    public long getLastFrameDuration() {
+        return lastFrameDuration;
+    }
+
     /**
      * Updates the timing system, should be called once per frame.
      */

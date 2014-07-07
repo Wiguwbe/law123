@@ -5,12 +5,13 @@ import java.util.List;
 import br.law123.core.Core;
 import br.law123.particle.Particle;
 import br.law123.particle.contact.ParticleContact;
+import br.law123.particle.contact.ParticleContactGenerator;
 
 /**
  * A contact generator that takes an STL vector of particle pointers and
  * collides them against the ground.
  */
-public class GroundContacts //implements ParticleContactGenerator
+public class GroundContacts implements ParticleContactGenerator
 {
 
     private List<Particle> particles;
@@ -47,5 +48,11 @@ public class GroundContacts //implements ParticleContactGenerator
             if (count >= limit) return count;
         }
         return count;
+    }
+
+    @Override
+    public int addContact(ParticleContact contact, int limit) {
+        // TODO Auto-generated method stub
+        return 0;
     }
 }

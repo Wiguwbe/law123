@@ -33,8 +33,20 @@ public class CollisionData {
      */
     private double tolerance;
 
+    public Contact[] getContactArray() {
+        return contactArray;
+    }
+
+    public void setContactArray(Contact[] contactArray) {
+        this.contactArray = contactArray;
+    }
+
     public int getContactsLeft() {
         return contactsLeft;
+    }
+
+    public int getContactCount() {
+        return contactCount;
     }
 
     public double getFriction() {
