@@ -1,6 +1,5 @@
 package br.law123.core;
 
-import br.law123.Definitions;
 
 /**
  * Holds a three degree of freedom orientation.
@@ -136,7 +135,7 @@ public class Quaternion {
 
         // Check for zero length quaternion, and use the no-rotation
         // quaternion in that case.
-        if (d < Definitions.double_epsilon) {
+        if (d == 0) { // TODO verificar se não é < Definitions.double_epsilon
             r = 1;
             return;
         }
