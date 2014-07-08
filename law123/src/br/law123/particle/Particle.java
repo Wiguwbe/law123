@@ -61,12 +61,12 @@ public class Particle {
 	/**
 	 * Holds the linear position of the particle in world space.
 	 */
-	private Vector3 position;
+    private Vector3 position = new Vector3();
 
 	/**
 	 * Holds the linear velocity of the particle in world space.
 	 */
-	private Vector3 velocity;
+    private Vector3 velocity = new Vector3();
 
 	/* @} */
 
@@ -83,14 +83,14 @@ public class Particle {
 	 * Holds the accumulated force to be applied at the next simulation
 	 * iteration only. This value is zeroed at each integration step.
 	 */
-	private Vector3 forceAccum;
+    private Vector3 forceAccum = new Vector3();
 
 	/**
 	 * Holds the acceleration of the particle. This value can be used to set
 	 * acceleration due to gravity (its primary use), or any other ant
 	 * acceleration.
 	 */
-	private Vector3 acceleration;
+    private Vector3 acceleration = new Vector3();
 
 	/* @} */
 

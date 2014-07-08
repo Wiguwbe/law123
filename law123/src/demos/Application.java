@@ -41,7 +41,7 @@ public class Application implements GLEventListener, MouseListener, MouseMotionL
     protected GL gl;
     protected GLU glu;
     protected GLUT glut;
-    private GLAutoDrawable glDrawable;
+    protected GLAutoDrawable glDrawable;
     private GLContext glContext;
 
     /**
@@ -53,6 +53,18 @@ public class Application implements GLEventListener, MouseListener, MouseMotionL
      * Holds the current width of the application window.
      */
     private int width;
+
+    public GL getGl() {
+        return gl;
+    }
+
+    public GLU getGlu() {
+        return glu;
+    }
+
+    public GLUT getGlut() {
+        return glut;
+    }
 
     /**
      * Gets the title of the demo for the title bar of the window.
@@ -254,8 +266,7 @@ public class Application implements GLEventListener, MouseListener, MouseMotionL
 
     @Override
     public void displayChanged(GLAutoDrawable arg0, boolean arg1, boolean arg2) {
-        // TODO Auto-generated method stub
-
+        System.out.println("dahsdsahuda");
     }
 
     /**
@@ -278,4 +289,5 @@ public class Application implements GLEventListener, MouseListener, MouseMotionL
         gl.glViewport(0, 0, width, height);
         setView();
     }
+
 }

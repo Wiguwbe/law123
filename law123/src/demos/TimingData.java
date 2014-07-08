@@ -7,7 +7,7 @@ import java.lang.management.ThreadMXBean;
  * Represents all the information that the demo might need about the
  * timing of the game: current time, fps, frame number, and so on.
  */
-class TimingData {
+public class TimingData {
 
     private static final TimingData timingData = new TimingData();
 
@@ -68,6 +68,10 @@ class TimingData {
         return timingData;
     }
 
+    public long getLastFrameTimestamp() {
+        return lastFrameTimestamp;
+    }
+
     public long getLastFrameDuration() {
         return lastFrameDuration;
     }
@@ -75,7 +79,7 @@ class TimingData {
     /**
      * Updates the timing system, should be called once per frame.
      */
-    public static void update()// Updates the global frame information. Should be called once per frame.
+    public void update()// Updates the global frame information. Should be called once per frame.
     {
         // Advance the frame number.
         if (!timingData.isPaused) {

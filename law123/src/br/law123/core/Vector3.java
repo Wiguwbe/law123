@@ -294,4 +294,9 @@ public class Vector3 {
 		z = -z;
 	}
 
+    @Override
+    public String toString() {
+        return "x:" + x + " y: " + y + " z: " + z;
+    }
+
 }
