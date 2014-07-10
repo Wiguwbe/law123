@@ -30,7 +30,7 @@ class Box extends CollisionBox {
 
     /** Sets the box to a specific location. */
     void setState(double z) {
-        getBody().setPosition(0, 3, z);
+        getBody().setPosition(0, 30, z);
         getBody().setOrientation(1, 0, 0, 0);
         getBody().setVelocity(0, 0, 0);
         getBody().setRotation(new Vector3(0, 0, 0));

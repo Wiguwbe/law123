@@ -203,9 +203,9 @@ public class ContactResolver {
      */
     private void prepareContacts(Contact[] contacts, int numContacts, double duration) {
         // Generate contact velocity and axis information.
-        for (Contact contact : contacts) {
+        for (int i = 0; i < numContacts; i++) {
             // Calculate the internal contact data (inertia, basis, etc).
-            contact.calculateInternals(duration);
+            contacts[i].calculateInternals(duration);
         }
     }
 
@@ -214,8 +214,8 @@ public class ContactResolver {
      * using the given number of iterations.
      */
     private void adjustVelocities(Contact[] c, int numContacts, double duration) {
-        Vector3[] velocityChange = new Vector3[2];
-        Vector3[] rotationChange = new Vector3[2];
+        Vector3[] velocityChange = { new Vector3(), new Vector3() };
+        Vector3[] rotationChange = { new Vector3(), new Vector3() };
         Vector3 deltaVel = new Vector3();
 
         // iteratively handle impacts in order of severity.
@@ -271,7 +271,7 @@ public class ContactResolver {
         int i;
         int index;
         Vector3[] linearChange = new Vector3[2];
-        Vector3[] angularChange = new Vector3[2];
+        Vector3[] angularChange = { new Vector3(), new Vector3() };
         double max;
         Vector3 deltaPosition;
 

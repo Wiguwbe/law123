@@ -60,7 +60,7 @@ public class Contact {
     /**
      * Holds the direction of the contact in world coordinates.
      */
-    private Vector3 contactNormal;
+    private Vector3 contactNormal = new Vector3();
 
     /**
      * Holds the depth of penetration at the contact point. If both
@@ -74,7 +74,7 @@ public class Contact {
      * frame of reference to world co-ordinates. The columns of this
      * matrix form an orthonormal set of vectors.
      */
-    protected Matrix3 contactToWorld;
+    protected Matrix3 contactToWorld = new Matrix3();
 
     /**
      * Holds the closing velocity at the point of contact. This is set
@@ -295,6 +295,8 @@ public class Contact {
      */
     protected void calculateContactBasis() {
         Vector3[] contactTangent = new Vector3[2];
+        contactTangent[0] = new Vector3();
+        contactTangent[1] = new Vector3();
 
         // Check whether the Z-axis is nearer to the X or Y axis
         if (Math.abs(contactNormal.getX()) > Math.abs(contactNormal.getY())) {
@@ -342,7 +344,7 @@ public class Contact {
     protected void applyVelocityChange(Vector3 velocityChange[], Vector3 rotationChange[]) {
         // Get hold of the inverse mass and inverse inertia tensor, both in
         // world coordinates.
-        Matrix3[] inverseInertiaTensor = new Matrix3[2];
+        Matrix3[] inverseInertiaTensor = { new Matrix3(), new Matrix3() };
         body[0].getInverseInertiaTensorWorld(inverseInertiaTensor[0]);
         if (body[1] != null) {
             body[1].getInverseInertiaTensorWorld(inverseInertiaTensor[1]);

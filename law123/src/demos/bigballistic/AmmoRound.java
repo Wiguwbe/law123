@@ -10,7 +10,6 @@ import com.sun.opengl.util.GLUT;
 
 import demos.TimingData;
 import demos.ballistic.ShotType;
-import demos.ballistic.ShotType;
 
 class AmmoRound extends CollisionSphere {
     ShotType type;

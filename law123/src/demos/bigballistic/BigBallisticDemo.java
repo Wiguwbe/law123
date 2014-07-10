@@ -37,7 +37,7 @@ class BigBallisticDemo extends RigidBodyApplication {
     /**
      * Holds the number of boxes in the simulation.
      */
-    private final static int boxes = 2;
+    private final static int boxes = 20;
 
     /** Holds the box data. */
     private Box[] boxData = new Box[boxes];
@@ -59,7 +59,7 @@ class BigBallisticDemo extends RigidBodyApplication {
         for (int i = 0; i < boxData.length; i++) {
             boxData[i] = new Box();
             boxData[i].setState(z);
-            z += 90.0f;
+            z += 10.0f;
         }
     }
 
@@ -180,7 +180,7 @@ class BigBallisticDemo extends RigidBodyApplication {
     /** Display world. */
     @Override
     public void display(GLAutoDrawable arg0) {
-
+        update();
         // Clear the viewport and set the camera direction
         getGl().glClear(GL.GL_COLOR_BUFFER_BIT | GL.GL_DEPTH_BUFFER_BIT);
         getGl().glLoadIdentity();
