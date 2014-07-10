@@ -1,5 +1,5 @@
 package demos.ballistic;
 
-enum ShotType {
+public enum ShotType {
     UNUSED, PISTOL, ARTILLERY, FIREBALL, LASER;
 }

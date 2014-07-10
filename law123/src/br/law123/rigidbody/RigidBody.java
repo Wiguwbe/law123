@@ -21,7 +21,7 @@ import br.law123.core.Vector3;
  * 64 words in memory. Of this total 15 words are padding, distributed among the
  * Vector3 data members.
  */
-public abstract class RigidBody {
+public class RigidBody {
 
 	/**
 	 * @name Characteristic Data and State
@@ -74,7 +74,7 @@ public abstract class RigidBody {
 	 * 
 	 * @see inverseMass
 	 */
-	private Matrix3 inverseInertiaTensor;
+    private Matrix3 inverseInertiaTensor = new Matrix3();
 
 	/**
 	 * Holds the amount of damping applied to linear motion. Damping is required
@@ -92,23 +92,23 @@ public abstract class RigidBody {
 	/**
 	 * Holds the linear position of the rigid body in world space.
 	 */
-	private Vector3 position;
+    private Vector3 position = new Vector3();
 
 	/**
 	 * Holds the angular orientation of the rigid body in world space.
 	 */
-	private Quaternion orientation;
+    private Quaternion orientation = new Quaternion();
 
 	/**
 	 * Holds the linear velocity of the rigid body in world space.
 	 */
-	private Vector3 velocity;
+    private Vector3 velocity = new Vector3();
 
 	/**
 	 * Holds the angular velocity, or rotation, or the rigid body in world
 	 * space.
 	 */
-	private Vector3 rotation;
+    private Vector3 rotation = new Vector3();
 
 	/* @} */
 
@@ -126,7 +126,7 @@ public abstract class RigidBody {
 	 * 
 	 * @see inverseInertiaTensor
 	 */
-	private Matrix3 inverseInertiaTensorWorld;
+    private Matrix3 inverseInertiaTensorWorld = new Matrix3();
 
 	/**
 	 * Holds the amount of motion of the body. This is a recency weighted mean
@@ -155,7 +155,7 @@ public abstract class RigidBody {
 	 * @see getPointInWorldSpace
 	 * @see getTransform
 	 */
-	private Matrix4 transformMatrix;
+    private Matrix4 transformMatrix = new Matrix4();
 
 	/* @} */
 
@@ -174,19 +174,19 @@ public abstract class RigidBody {
 	/**
 	 * Holds the accumulated force to be applied at the next integration step.
 	 */
-	private Vector3 forceAccum;
+    private Vector3 forceAccum = new Vector3();
 
 	/**
 	 * Holds the accumulated torque to be applied at the next integration step.
 	 */
-	private Vector3 torqueAccum;
+    private Vector3 torqueAccum = new Vector3();
 
 	/**
 	 * Holds the acceleration of the rigid body. This value can be used to set
 	 * acceleration due to gravity (its primary use), or any other ant
 	 * acceleration.
 	 */
-	private Vector3 acceleration;
+    private Vector3 acceleration = new Vector3();
 
 	/**
 	 * Holds the linear acceleration of the rigid body, for the previous frame.

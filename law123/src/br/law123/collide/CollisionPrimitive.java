@@ -17,7 +17,7 @@ class CollisionPrimitive {
     /**
      * The offset of this primitive from the given rigid body.
      */
-    private Matrix4 offset;
+    private Matrix4 offset = new Matrix4();
 
     /**
      * The resultant transform of the primitive. This is
@@ -26,6 +26,10 @@ class CollisionPrimitive {
      */
     private Matrix4 transform;
 
+    public void setBody(RigidBody body) {
+        this.body = body;
+    }
+
     public RigidBody getBody() {
         return body;
     }
@@ -33,7 +37,7 @@ class CollisionPrimitive {
     /**
      * Calculates the internals for the primitive.
      */
-    private void calculateInternals() {
+    public void calculateInternals() {
         transform = body.getTransform().mult(offset);
     }
 

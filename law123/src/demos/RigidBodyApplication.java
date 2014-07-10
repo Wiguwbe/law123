@@ -18,13 +18,13 @@ import br.law123.rigidbody.contact.ContactResolver;
 public abstract class RigidBodyApplication extends Application {
 
     /** Holds the maximum number of contacts. */
-    private static final int maxContacts = 256;
+    protected static final int maxContacts = 256;
 
     /** Holds the array of contacts. */
     private Contact[] contacts = new Contact[maxContacts];
 
     /** Holds the collision data structure for collision detection. */
-    private CollisionData cData;
+    private CollisionData cData = new CollisionData();
 
     /** Holds the contact resolver. */
     private ContactResolver resolver;
@@ -46,6 +46,14 @@ public abstract class RigidBodyApplication extends Application {
 
     /** Pauses the simulation after the next frame automatically */
     private boolean autoPauseSimulation;
+
+    public CollisionData getcData() {
+        return cData;
+    }
+
+    public void setPauseSimulation(boolean pauseSimulation) {
+        this.pauseSimulation = pauseSimulation;
+    }
 
     /**
      * Finishes drawing the frame, adding debugging information
@@ -106,20 +114,17 @@ public abstract class RigidBodyApplication extends Application {
 
     /** Update the objects. */
     @Override
-    public void update(){
+    public void update() {
         // Find the duration of the last frame in seconds
         float duration = TimingData.get().getLastFrameDuration() * 0.001f;
         if (duration <= 0.0f) return;
         else if (duration > 0.05f) duration = 0.05f;
 
         // Exit immediately if we aren't running the simulation
-        if (pauseSimulation)
-        {
+        if (pauseSimulation) {
             super.update();
             return;
-        }
-        else if (autoPauseSimulation)
-        {
+        } else if (autoPauseSimulation) {
             pauseSimulation = true;
             autoPauseSimulation = false;
         }
@@ -131,7 +136,7 @@ public abstract class RigidBodyApplication extends Application {
         generateContacts();
 
         // Resolve detected contacts
-        resolver.resolveContacts(cData.getContactArray(),cData.getContactCount(),duration);
+        resolver.resolveContacts(cData.getContactArray(), cData.getContactCount(), duration);
 
         super.update();
     }
@@ -191,12 +196,12 @@ public abstract class RigidBodyApplication extends Application {
     }
 
     /** Processes the contact generation code. */
-    abstract void generateContacts();
+    protected abstract void generateContacts();
 
     /** Processes the objects in the simulation forward in time. */
-    abstract void updateObjects(double duration);
+    protected abstract void updateObjects(double duration);
 
     /** Resets the simulation. */
-    abstract void reset();
+    protected abstract void reset();
 
 }

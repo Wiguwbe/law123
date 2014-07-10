@@ -7,7 +7,7 @@ import br.law123.core.Vector3;
  * rigid body. It is used for contacts with the immovable
  * world geometry.
  */
-class CollisionPlane {
+public class CollisionPlane {
 
     /**
      * The plane normal
@@ -19,8 +19,16 @@ class CollisionPlane {
      */
     private double offset;
 
+    public void setDirection(Vector3 direction) {
+        this.direction = direction;
+    }
+
     public Vector3 getDirection() {
         return direction;
+    }
+
+    public void setOffset(double offset) {
+        this.offset = offset;
     }
 
     public double getOffset() {

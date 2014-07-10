@@ -53,8 +53,24 @@ public class CollisionData {
         return friction;
     }
 
+    public void setFriction(double friction) {
+        this.friction = friction;
+    }
+
     public double getRestitution() {
         return restitution;
+    }
+
+    public void setRestitution(double restitution) {
+        this.restitution = restitution;
+    }
+
+    public double getTolerance() {
+        return tolerance;
+    }
+
+    public void setTolerance(double tolerance) {
+        this.tolerance = tolerance;
     }
 
     /**
@@ -68,7 +84,7 @@ public class CollisionData {
     /**
      * Resets the data so that it has no used contacts recorded.
      */
-    void reset(int maxContacts) {
+    public void reset(int maxContacts) {
         contactsLeft = maxContacts;
         contactArray = new Contact[maxContacts];
         contactCount = 0;

@@ -11,7 +11,7 @@ import br.law123.rigidbody.contact.Contact;
  * of two objects, and a pointer to a contact array to fill. It
  * returns the number of contacts it wrote into the array.
  */
-class CollisionDetector {
+public class CollisionDetector {
 
     // Go through each combination of + and - for each half-size
     public static double mults[][] = { { 1, 1, 1 }, { -1, 1, 1 }, { 1, -1, 1 }, { -1, -1, 1 }, { 1, 1, -1 }, { -1, 1, -1 }, { 1, -1, -1 }, { -1, -1, -1 } };
@@ -303,14 +303,14 @@ class CollisionDetector {
         return 1;
     }
 
-    public static int boxAndSphere(CollisionBox box, CollisionSphere sphere, CollisionData data) {
+    public static boolean boxAndSphere(CollisionBox box, CollisionSphere sphere, CollisionData data) {
         // Transform the centre of the sphere into box coordinates
         Vector3 centre = sphere.getAxis(3);
         Vector3 relCentre = box.getTransform().transformInverse(centre);
 
         // Early out check to see if we can exclude the contact
         if (Math.abs(relCentre.getX()) - sphere.getRadius() > box.getHalfSize().getX() || Math.abs(relCentre.getY()) - sphere.getRadius() > box.getHalfSize().getY() || Math.abs(relCentre.getZ()) - sphere.getRadius() > box.getHalfSize().getZ()) {
-            return 0;
+            return false;
         }
 
         Vector3 closestPt = new Vector3();
@@ -334,7 +334,7 @@ class CollisionDetector {
 
         // Check we're in contact
         dist = closestPt.sub(relCentre).squareMagnitude();
-        if (dist > sphere.getRadius() * sphere.getRadius()) return 0;
+        if (dist > sphere.getRadius() * sphere.getRadius()) return false;
 
         // Compile the contact
         Vector3 closestPtWorld = box.getTransform().transform(closestPt);
@@ -347,7 +347,7 @@ class CollisionDetector {
         contact.setBodyData(box.getBody(), sphere.getBody(), data.getFriction(), data.getRestitution());
 
         data.addContacts(contact);
-        return 1;
+        return true;
     }
 
 }
