@@ -268,4 +268,9 @@ public class Matrix4 {
         array[14] = (float) data[11];
         array[15] = 1;
     }
+
+    @Override
+    public String toString() {
+        return "[" + data[0] + ", " + data[1] + ", " + data[2] + ", " + data[3] + ", " + data[4] + ", " + data[5] + ", " + data[6] + ", " + data[7] + ", " + data[8] + ", " + data[9] + ", " + data[10] + ", " + data[11] + ", " + "]";
+    }
 }

@@ -135,7 +135,7 @@ public class Quaternion {
 
         // Check for zero length quaternion, and use the no-rotation
         // quaternion in that case.
-        if (d == 0) { // TODO verificar se não é < Definitions.double_epsilon
+        if (d < 0) { // TODO verificar se não é < Definitions.double_epsilon
             r = 1;
             return;
         }
@@ -183,5 +183,10 @@ public class Quaternion {
     public void rotateByVector(Vector3 vector) {
         Quaternion q = new Quaternion(0, vector.getX(), vector.getY(), vector.getZ());
         multToMe(q);
+    }
+
+    @Override
+    public String toString() {
+        return "r:" + r + " i: " + i + " j: " + j + " k:" + k;
     }
 }

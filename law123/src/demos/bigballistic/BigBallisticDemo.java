@@ -37,7 +37,7 @@ class BigBallisticDemo extends RigidBodyApplication {
     /**
      * Holds the number of boxes in the simulation.
      */
-    private final static int boxes = 20;
+    private final static int boxes = 1;
 
     /** Holds the box data. */
     private Box[] boxData = new Box[boxes];
@@ -234,7 +234,6 @@ class BigBallisticDemo extends RigidBodyApplication {
     /** Handle a mouse click. */
     @Override
     public void mouseClicked(java.awt.event.MouseEvent arg0) {
-        System.out.println("fire");
         update();
         fire();
         glDrawable.display();
@@ -243,7 +242,6 @@ class BigBallisticDemo extends RigidBodyApplication {
     /** Handle a keypress. */
     @Override
     public void keyPressed(KeyEvent e) {
-        System.out.println("keypressed");
         switch (e.getKeyChar()) {
             case '1':
                 currentShotType = ShotType.PISTOL;

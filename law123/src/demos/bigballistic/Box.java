@@ -23,14 +23,16 @@ class Box extends CollisionBox {
 
         gl.glPushMatrix();
         gl.glMultMatrixf(mat, 0);
+        System.out.println(getBody().getTransform());
         gl.glScaled(getHalfSize().getX() * 2, getHalfSize().getY() * 2, getHalfSize().getZ() * 2);
+        
         glut.glutSolidCube(1.0f);
         gl.glPopMatrix();
     }
 
     /** Sets the box to a specific location. */
     void setState(double z) {
-        getBody().setPosition(0, 30, z);
+        getBody().setPosition(0, 3, z);
         getBody().setOrientation(1, 0, 0, 0);
         getBody().setVelocity(0, 0, 0);
         getBody().setRotation(new Vector3(0, 0, 0));

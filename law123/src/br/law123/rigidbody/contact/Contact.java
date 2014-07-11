@@ -472,6 +472,8 @@ public class Contact {
                     angularChange[i] = inverseInertiaTensor.transform(targetAngularDirection).mult(angularMove[i] / angularInertia[i]);
                 }
 
+                System.err.println("AQUI ESTÁ O PROBLEMA....");
+
                 // Velocity change is easier - it is just the linear movement
                 // along the contact normal.
                 linearChange[i] = contactNormal.mult(linearMove[i]);
