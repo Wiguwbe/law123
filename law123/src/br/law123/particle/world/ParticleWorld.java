@@ -1,5 +1,6 @@
 package br.law123.particle.world;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import br.law123.forcegenerator.ParticleForceRegistry;
@@ -17,7 +18,7 @@ public class ParticleWorld {
     /**
      * Holds the particles
      */
-    private List<Particle> particles;
+    private List<Particle> particles = new ArrayList<Particle>();
 
     /**
      * True if the world should calculate the number of iterations
@@ -28,7 +29,7 @@ public class ParticleWorld {
     /**
      * Holds the force generators for the particles in this world.
      */
-    private ParticleForceRegistry registry;
+    private ParticleForceRegistry registry = new ParticleForceRegistry();
 
     /**
      * Holds the resolver for contacts.
@@ -38,7 +39,7 @@ public class ParticleWorld {
     /**
      * Contact generators.
      */
-    private List<ParticleContactGenerator> contactGenerators;
+    private List<ParticleContactGenerator> contactGenerators = new ArrayList<ParticleContactGenerator>();
 
     /**
      * Holds the list of contacts.
@@ -66,6 +67,9 @@ public class ParticleWorld {
         this.resolver = new ParticleContactResolver(iterations);
         this.maxContacts = maxContacts;
         contacts = new ParticleContact[maxContacts];
+        for (int i = 0; i < contacts.length; i++) {
+            contacts[i] = new ParticleContact();
+        }
         calculateIterations = (iterations == 0);
 
     }

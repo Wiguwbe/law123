@@ -7,7 +7,7 @@ import br.law123.particle.contact.ParticleContact;
  * Cables link a pair of particles, generating a contact if they
  * stray too far apart.
  */
-class ParticleCable extends ParticleLink {
+public class ParticleCable extends ParticleLink {
 
     /**
      * Holds the maximum length of the cable.
@@ -18,6 +18,22 @@ class ParticleCable extends ParticleLink {
      * Holds the restitution (bounciness) of the cable.
      */
     double restitution;
+
+    public double getMaxLength() {
+        return maxLength;
+    }
+
+    public void setMaxLength(double maxLength) {
+        this.maxLength = maxLength;
+    }
+
+    public double getRestitution() {
+        return restitution;
+    }
+
+    public void setRestitution(double restitution) {
+        this.restitution = restitution;
+    }
 
     /**
      * Fills the given contact structure with the contact needed

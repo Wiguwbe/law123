@@ -49,6 +49,10 @@ public class CollisionData {
         return contactCount;
     }
 
+    public void setContactCount(int contactCount) {
+        this.contactCount = contactCount;
+    }
+
     public double getFriction() {
         return friction;
     }

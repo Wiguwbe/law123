@@ -21,12 +21,28 @@ class ParticleConstraint implements ParticleContactGenerator {
      */
     protected Vector3 anchor;
 
+    public Particle getParticle() {
+        return particle;
+    }
+
+    public void setParticle(Particle particle) {
+        this.particle = particle;
+    }
+
     /**
      * Returns the current length of the link.
      */
     protected double currentLength() {
         Vector3 relativePos = particle.getPosition().sub(anchor);
         return relativePos.magnitude();
+    }
+
+    public Vector3 getAnchor() {
+        return anchor;
+    }
+
+    public void setAnchor(Vector3 anchor) {
+        this.anchor = anchor;
     }
 
     /**

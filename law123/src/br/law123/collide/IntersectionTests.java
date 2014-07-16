@@ -7,7 +7,7 @@ import br.law123.core.Vector3;
  * can be used to drive the coarse collision detection system or
  * as an early out in the full collision tests below.
  */
-class IntersectionTests {
+public class IntersectionTests {
 
     public static boolean sphereAndHalfSpace(CollisionSphere sphere, CollisionPlane plane) {
         // Find the distance from the origin

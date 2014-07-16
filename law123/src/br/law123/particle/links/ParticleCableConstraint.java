@@ -7,7 +7,7 @@ import br.law123.particle.contact.ParticleContact;
  * Cables link a particle to an anchor point, generating a contact if they
  * stray too far apart.
  */
-class ParticleCableConstraint extends ParticleConstraint {
+public class ParticleCableConstraint extends ParticleConstraint {
 
     /**
      * Holds the maximum length of the cable.
@@ -19,11 +19,26 @@ class ParticleCableConstraint extends ParticleConstraint {
      */
     private double restitution;
 
+    public double getMaxLength() {
+        return maxLength;
+    }
+
+    public void setMaxLength(double maxLength) {
+        this.maxLength = maxLength;
+    }
+
+    public double getRestitution() {
+        return restitution;
+    }
+
+    public void setRestitution(double restitution) {
+        this.restitution = restitution;
+    }
+
     /**
      * Fills the given contact structure with the contact needed
      * to keep the cable from over-extending.
      */
-
     @Override
     public int addContact(ParticleContact contact, int limit) {
         // Find the length of the cable

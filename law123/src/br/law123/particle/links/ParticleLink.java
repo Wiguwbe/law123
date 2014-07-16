@@ -18,6 +18,10 @@ public abstract class ParticleLink implements ParticleContactGenerator {
      */
     protected Particle[] particle = new Particle[2];
 
+    public Particle[] getParticle() {
+        return particle;
+    }
+
     /**
      * Returns the current length of the link.
      */

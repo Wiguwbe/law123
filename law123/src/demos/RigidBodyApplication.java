@@ -36,7 +36,7 @@ public abstract class RigidBodyApplication extends Application {
     private float phi;
 
     /** Holds the position of the mouse at the last frame of a drag. */
-    private int last_x, last_y;
+    protected int last_x, last_y;
 
     /** True if the contacts should be rendered. */
     private boolean renderDebugInfo;
@@ -59,7 +59,7 @@ public abstract class RigidBodyApplication extends Application {
      * Finishes drawing the frame, adding debugging information
      * as needed.
      */
-    private void drawDebug() {
+    protected void drawDebug() {
         if (!renderDebugInfo) return;
 
         // Recalculate the contacts, so they are current (in case we're

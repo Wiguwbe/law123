@@ -7,12 +7,20 @@ import br.law123.particle.contact.ParticleContact;
  * Rods link a pair of particles, generating a contact if they
  * stray too far apart or too close.
  */
-class ParticleRod extends ParticleLink {
+public class ParticleRod extends ParticleLink {
 
     /**
      * Holds the length of the rod.
      */
     private double length;
+
+    public double getLength() {
+        return length;
+    }
+
+    public void setLength(double length) {
+        this.length = length;
+    }
 
     /**
      * Fills the given contact structure with the contact needed

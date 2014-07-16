@@ -13,16 +13,17 @@ import br.law123.particle.world.ParticleWorld;
 /**
  * This application adds additional functionality used in the mass-aggregate demos.
  */
-class MassAggregateApplication extends Application {
+public class MassAggregateApplication extends Application {
 
-    private ParticleWorld world;
-    private Particle[] particleArray;
-    private GroundContacts groundContactGenerator;
+    protected ParticleWorld world;
+    protected Particle[] particleArray;
+    private GroundContacts groundContactGenerator = new GroundContacts();
 
     public MassAggregateApplication(int particleCount) {
         this.world = new ParticleWorld(particleCount * 10);
         particleArray = new Particle[particleCount];
         for (int i = 0; i < particleCount; i++) {
+            particleArray[i] = new Particle();
             world.getParticles().add(particleArray[i]);
         }
 
