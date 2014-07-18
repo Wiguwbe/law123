@@ -103,7 +103,7 @@ public class Random {
     /**
      * Returns a random integer less than the given value.
      */
-    int randomInt(int max) {
+    public int randomInt(int max) {
         return randomBits() % max;
     }
 
