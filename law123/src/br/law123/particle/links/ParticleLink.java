@@ -16,7 +16,7 @@ public abstract class ParticleLink implements ParticleContactGenerator {
     /**
      * Holds the pair of particles that are connected by this link.
      */
-    protected Particle[] particle = new Particle[2];
+    protected Particle[] particle = { new Particle(), new Particle() };
 
     public Particle[] getParticle() {
         return particle;

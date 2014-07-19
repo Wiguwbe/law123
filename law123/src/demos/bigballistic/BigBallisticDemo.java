@@ -37,7 +37,7 @@ class BigBallisticDemo extends RigidBodyApplication {
     /**
      * Holds the number of boxes in the simulation.
      */
-    private final static int boxes = 1;
+    private final static int boxes = 10;
 
     /** Holds the box data. */
     private Box[] boxData = new Box[boxes];
