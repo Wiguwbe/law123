@@ -7,7 +7,7 @@ import br.law123.rigidbody.RigidBody;
 /**
  * A force generator that applies an aerodynamic force.
  */
-class Aero extends BaseForceGenerator {
+public class Aero extends BaseForceGenerator {
 
     /**
      * Holds the aerodynamic tensor for the surface in body
@@ -33,7 +33,7 @@ class Aero extends BaseForceGenerator {
      * Creates a new aerodynamic force generator with the
      * given properties.
      */
-    Aero(Matrix3 tensor, Vector3 position, Vector3 windspeed) {
+    public Aero(Matrix3 tensor, Vector3 position, Vector3 windspeed) {
         this.tensor = tensor;
         this.position = position;
         this.windspeed = windspeed;

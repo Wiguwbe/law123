@@ -120,7 +120,7 @@ public class Contact {
     }
 
     public void setContactPoint(Vector3 contactPoint) {
-        this.contactPoint = contactPoint;
+        this.contactPoint = new Vector3(contactPoint);
     }
 
     public Vector3 getContactNormal() {
@@ -128,7 +128,7 @@ public class Contact {
     }
 
     public void setContactNormal(Vector3 contactNormal) {
-        this.contactNormal = contactNormal;
+        this.contactNormal = new Vector3(contactNormal);
     }
 
     public double getPenetration() {
@@ -563,7 +563,7 @@ public class Contact {
 
         // Build the matrix to convert contact impulse to change in velocity
         // in world coordinates.
-        Matrix3 deltaVelWorld = impulseToTorque;
+        Matrix3 deltaVelWorld = new Matrix3(impulseToTorque);
         deltaVelWorld.multToMe(inverseInertiaTensor[0]);
         deltaVelWorld.multToMe(impulseToTorque);
         deltaVelWorld.multToMe(-1);

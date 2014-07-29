@@ -78,11 +78,18 @@ public class Matrix4 {
      * @param vector The vector to transform.
      */
     public Vector3 mult(Vector3 vector) {
-        return new Vector3(vector.getX() * data[0] + vector.getY() * data[1] + vector.getZ() * data[2] + data[3],
+        return new Vector3(
+                           vector.getX() * data[0] + 
+                           vector.getY() * data[1] + 
+                           vector.getZ() * data[2] + data[3],
 
-        vector.getX() * data[4] + vector.getY() * data[5] + vector.getZ() * data[6] + data[7],
+                           vector.getX() * data[4] + 
+                           vector.getY() * data[5] + 
+                           vector.getZ() * data[6] + data[7],
 
-        vector.getX() * data[8] + vector.getY() * data[9] + vector.getZ() * data[10] + data[11]);
+                           vector.getX() * data[8] + 
+                           vector.getY() * data[9] + 
+                           vector.getZ() * data[10] + data[11]);
     }
 
     /**

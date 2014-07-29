@@ -9,7 +9,7 @@ import br.law123.rigidbody.RigidBody;
  * A force generator with an aerodynamic surface that can be
  * re-oriented relative to its rigid body. This derives the
  */
-class AngledAero extends Aero {
+public class AngledAero extends Aero {
 
     /**
      * Holds the orientation of the aerodynamic surface relative

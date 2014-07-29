@@ -9,7 +9,7 @@ import br.law123.rigidbody.RigidBody;
 /**
  * Holds all the force generators and the bodies they apply to.
  */
-class ForceRegistry {
+public class ForceRegistry {
 
     /**
      * Holds the list of registrations.

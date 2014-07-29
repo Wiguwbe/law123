@@ -263,8 +263,9 @@ public class Particle {
 	 * @param position
 	 *            A pointer to a vector into which to write the position.
 	 */
+    @Deprecated
 	public void getPosition(Vector3 position) {
-		position = this.position;
+        fillVector3(this.position, position);
 	}
 
 	/**
@@ -311,8 +312,9 @@ public class Particle {
 	 *            A pointer to a vector into which to write the velocity. The
 	 *            velocity is given in world local space.
 	 */
+    @Deprecated
 	public void getVelocity(Vector3 velocity) {
-		velocity = this.velocity;
+        fillVector3(this.velocity, velocity);
 	}
 
 	/**
@@ -360,8 +362,9 @@ public class Particle {
 	 *            A pointer to a vector into which to write the acceleration.
 	 *            The acceleration is given in world local space.
 	 */
+    @Deprecated
 	public void getAcceleration(Vector3 acceleration) {
-		acceleration = this.acceleration;
+        fillVector3(this.acceleration, acceleration);
 	}
 
 	/**
@@ -401,5 +404,11 @@ public class Particle {
 	public void addForce(Vector3 force) {
 		forceAccum.sumToMe(force);
 	}
+
+    private void fillVector3(Vector3 origin, Vector3 destin) {
+        destin.setX(origin.getX());
+        destin.setY(origin.getY());
+        destin.setZ(origin.getZ());
+    }
 
 }

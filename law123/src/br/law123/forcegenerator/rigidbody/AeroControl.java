@@ -11,7 +11,7 @@ import br.law123.rigidbody.RigidBody;
  * the one inherited from the base class, the two extremes are
  * defined in this class.
  */
-class AeroControl extends Aero {
+public class AeroControl extends Aero {
 
     /**
      * The aerodynamic tensor for the surface, when the control is at

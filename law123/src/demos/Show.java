@@ -26,7 +26,7 @@ public class Show extends JFrame implements GLEventListener {
         //glutMainLoop();
 
         setBounds(50, 100, 640, 320);
-        setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+        setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new BorderLayout());
 
         GLCapabilities glCaps = new GLCapabilities();

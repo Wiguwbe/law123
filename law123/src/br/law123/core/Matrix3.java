@@ -55,6 +55,18 @@ public class Matrix3 {
         data[8] = c8;
     }
 
+    public Matrix3(Matrix3 m) {
+        data[0] = m.getData(0);
+        data[1] = m.getData(1);
+        data[2] = m.getData(2);
+        data[3] = m.getData(3);
+        data[4] = m.getData(4);
+        data[5] = m.getData(5);
+        data[6] = m.getData(6);
+        data[7] = m.getData(7);
+        data[8] = m.getData(8);
+    }
+
     /**
      * Sets the matrix to be a diagonal matrix with the given
      * values along the leading diagonal.
