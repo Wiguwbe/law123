@@ -125,7 +125,7 @@ public class ParticleWorld {
         int usedContacts = generateContacts();
 
         // And process them
-        if (usedContacts == 1) {
+        if (usedContacts > 0) {
             if (calculateIterations) resolver.setIterations(usedContacts * 2);
             resolver.resolveContacts(contacts, usedContacts, duration);
         }

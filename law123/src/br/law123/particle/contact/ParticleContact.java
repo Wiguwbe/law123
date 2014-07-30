@@ -41,7 +41,7 @@ public class ParticleContact {
      * Holds the amount each particle is moved by during interpenetration
      * resolution.
      */
-    private Vector3[] particleMovement = new Vector3[2];
+    private Vector3[] particleMovement = { new Vector3(), new Vector3() };
 
     public Particle[] getParticle() {
         return particle;
@@ -83,7 +83,7 @@ public class ParticleContact {
      * Calculates the separating velocity at this contact.
      */
     protected double calculateSeparatingVelocity() {
-        Vector3 relativeVelocity = particle[0].getVelocity();
+        Vector3 relativeVelocity = new Vector3(particle[0].getVelocity());
         if (particle[1] != null) {
             relativeVelocity.subToMe(particle[1].getVelocity());
         }
@@ -108,7 +108,7 @@ public class ParticleContact {
         double newSepVelocity = -separatingVelocity * restitution;
 
         // Check the velocity build-up due to acceleration only
-        Vector3 accCausedVelocity = particle[0].getAcceleration();
+        Vector3 accCausedVelocity = new Vector3(particle[0].getAcceleration());
         if (particle[1] != null) {
             accCausedVelocity.subToMe(particle[1].getAcceleration());
         }

@@ -133,7 +133,7 @@ public class Particle {
 		position.addScaledVector(velocity, duration);
 
 		// Work out the acceleration from the force
-		Vector3 resultingAcc = acceleration;
+        Vector3 resultingAcc = new Vector3(acceleration);
 		resultingAcc.addScaledVector(forceAccum, inverseMass);
 
 		// Update linear velocity from the acceleration.
