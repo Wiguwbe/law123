@@ -52,7 +52,7 @@ public class CollideUtils {
     public static boolean tryAxis(CollisionBox one, CollisionBox two, Vector3 axis, Vector3 toCentre, int index,
 
     // These values may be updated
-    double smallestPenetration, int smallestCase) {
+    NumberReference smallestPenetration, NumberReference smallestCase) {
         // Make sure we have a normalized axis, and don't check almost parallel axes
         if (axis.squareMagnitude() < 0.0001) return true;
         axis.normalise();
@@ -60,9 +60,9 @@ public class CollideUtils {
         double penetration = penetrationOnAxis(one, two, axis, toCentre);
 
         if (penetration < 0) return false;
-        if (penetration < smallestPenetration) {
-            smallestPenetration = penetration;
-            smallestCase = index;
+        if (penetration < (Double) smallestPenetration.get()) {
+            smallestPenetration.set(penetration);
+            smallestCase.set(index);
         }
         return true;
     }

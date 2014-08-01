@@ -1,4 +1,4 @@
-package demos.bridge;
+package demos.malha;
 
 import java.awt.event.KeyEvent;
 
