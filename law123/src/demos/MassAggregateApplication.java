@@ -52,6 +52,7 @@ public class MassAggregateApplication extends Application {
     @Override
     public void display(GLAutoDrawable arg0) {
         // Clear the view port and set the camera direction
+        super.display(arg0);
         gl.glClear(GL.GL_COLOR_BUFFER_BIT | GL.GL_DEPTH_BUFFER_BIT);
         gl.glLoadIdentity();
         glu.gluLookAt(0.0, 3.5, 8.0, 0.0, 3.5, 0.0, 0.0, 1.0, 0.0);

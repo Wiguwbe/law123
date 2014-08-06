@@ -5,6 +5,8 @@ import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
+import java.util.Timer;
+import java.util.TimerTask;
 
 import javax.media.opengl.DebugGL;
 import javax.media.opengl.GL;
@@ -97,6 +99,9 @@ public class Application implements GLEventListener, MouseListener, MouseMotionL
         gl.glShadeModel(GL.GL_SMOOTH);
 
         setView();
+
+        Timer t = new Timer();
+        t.scheduleAtFixedRate(updateFPS, 1000, 1000);
     }
 
     /**
@@ -245,6 +250,18 @@ public class Application implements GLEventListener, MouseListener, MouseMotionL
 
     }
 
+    private int totalFrameCount = 0;
+    TimerTask updateFPS = new TimerTask() {
+
+        public void run() {
+            // display current totalFrameCount - previous,
+            // OR
+            // display current totalFrameCount, then set
+            System.out.println("FPS:" + totalFrameCount);
+            totalFrameCount = 0;
+        }
+    };
+
     /**
      * Called each frame to display the current scene. The common code
      * will automatically flush the graphics pipe and swap the render
@@ -256,6 +273,7 @@ public class Application implements GLEventListener, MouseListener, MouseMotionL
      */
     @Override
     public void display(GLAutoDrawable arg0) {
+        totalFrameCount++;
         gl.glClear(GL.GL_COLOR_BUFFER_BIT);
 
         gl.glBegin(GL.GL_LINES);

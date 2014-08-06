@@ -104,6 +104,7 @@ public abstract class RigidBodyApplication extends Application {
 
     @Override
     public void display(GLAutoDrawable arg0) {
+        super.display(arg0);
         gl.glClear(GL.GL_COLOR_BUFFER_BIT | GL.GL_DEPTH_BUFFER_BIT);
         gl.glLoadIdentity();
         glu.gluLookAt(18.0f, 0, 0, 0, 0, 0, 0, 1.0f, 0);
