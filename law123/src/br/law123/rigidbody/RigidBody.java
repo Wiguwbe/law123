@@ -229,9 +229,6 @@ public class RigidBody {
         orientation.normalise();
 
         // Calculate the transform matrix for the body.
-        System.out.println("    TranMat: " + transformMatrix);
-        System.out.println("    Posicao: " + position);
-        System.out.println("    Orienta: " + orientation);
         RigidBodyUtils.calculateTransformMatrix(transformMatrix, position, orientation);
 
         // Calculate the inertiaTensor in world space.

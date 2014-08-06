@@ -3,6 +3,7 @@ package br.law123.particle.world;
 import java.util.List;
 
 import br.law123.core.Core;
+import br.law123.core.Vector3;
 import br.law123.particle.Particle;
 import br.law123.particle.contact.ParticleContact;
 import br.law123.particle.contact.ParticleContactGenerator;
@@ -11,8 +12,7 @@ import br.law123.particle.contact.ParticleContactGenerator;
  * A contact generator that takes an STL vector of particle pointers and
  * collides them against the ground.
  */
-public class GroundContacts implements ParticleContactGenerator
-{
+public class GroundContacts implements ParticleContactGenerator {
 
     private List<Particle> particles;
 
@@ -28,31 +28,24 @@ public class GroundContacts implements ParticleContactGenerator
         this.particles = aparticles;
     }
 
-    public int addContact(List<ParticleContact> contacts, int limit) {
+    @Override
+    public int addContact(ParticleContact[] contact, int offset, int limit) {
         int count = 0;
-        ParticleContact contact = contacts.get(count);
+        int i = offset;
         for (Particle p : particles) {
-
             double y = p.getPosition().getY();
-            if (y < 0.0f) { 
-                contact.setContactNormal(Core.UP);
-                contact.getParticle()[0] = p;
-                contact.getParticle()[1] = null;
-                contact.setPenetration(-y);
-                contact.setRestitution(0.2f);
-
+            if (y < 0.0f) {
+                contact[i].setContactNormal(new Vector3(Core.UP));
+                contact[i].getParticle()[0] = p;
+                contact[i].getParticle()[1] = null;
+                contact[i].setPenetration(-y);
+                contact[i].setRestitution(0.2f);
+                i++;
                 count++;
-                contact = contacts.get(count);
             }
 
             if (count >= limit) return count;
         }
         return count;
-    }
-
-    @Override
-    public int addContact(ParticleContact contact, int limit) {
-        // TODO Auto-generated method stub
-        return 0;
     }
 }

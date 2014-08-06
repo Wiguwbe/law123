@@ -22,7 +22,7 @@ public class ParticleForceRegistry
      * Registers the given force generator to apply to the
      * given particle.
      */
-    void add(Particle particle, ParticleForceGenerator fg){
+    public void add(Particle particle, ParticleForceGenerator fg) {
         registrations.add(new ParticleForceRegistration(particle, fg));
     }
 

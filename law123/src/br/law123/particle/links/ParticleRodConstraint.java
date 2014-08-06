@@ -20,7 +20,7 @@ class ParticleRodConstraint extends ParticleConstraint {
      */
 
     @Override
-    public int addContact(ParticleContact contact, int limit) {
+    public int addContact(ParticleContact[] contacts, int offset, int limit) {
         // Find the length of the rod
         double currentLen = currentLength();
 
@@ -28,6 +28,8 @@ class ParticleRodConstraint extends ParticleConstraint {
         if (currentLen == length) {
             return 0;
         }
+        
+        ParticleContact contact = contacts[offset];
 
         // Otherwise return the contact
         contact.getParticle()[0] = particle;

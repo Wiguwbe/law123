@@ -133,7 +133,6 @@ public class BallisticDemo extends Application {
     @Override
     public void display(javax.media.opengl.GLAutoDrawable arg0) {
         update();
-        System.out.println("testes");
         // Clear the viewport and set the camera direction
         getGl().glClear(GL.GL_COLOR_BUFFER_BIT | GL.GL_DEPTH_BUFFER_BIT);
         getGl().glLoadIdentity();
@@ -185,7 +184,6 @@ public class BallisticDemo extends Application {
     /** Handle a mouse click. */
     @Override
     public void mouseClicked(java.awt.event.MouseEvent arg0) {
-        System.out.println("fire");
         update();
         fire();
         glDrawable.display();
@@ -194,7 +192,6 @@ public class BallisticDemo extends Application {
     /** Handle a keypress. */
     @Override
     public void keyPressed(KeyEvent e) {
-        System.out.println("keypressed");
         switch (e.getKeyChar()) {
             case '1':
                 currentShotType = ShotType.PISTOL;

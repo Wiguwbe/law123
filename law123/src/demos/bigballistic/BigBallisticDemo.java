@@ -29,7 +29,7 @@ class BigBallisticDemo extends RigidBodyApplication {
      * Holds the maximum number of rounds that can be
      * fired.
      */
-    private final static int ammoRounds = 256;
+    private final static int ammoRounds = 1024;
 
     /** Holds the particle data. */
     private AmmoRound[] ammo = new AmmoRound[ammoRounds];
@@ -37,7 +37,7 @@ class BigBallisticDemo extends RigidBodyApplication {
     /**
      * Holds the number of boxes in the simulation.
      */
-    private final static int boxes = 10;
+    private final static int boxes = 200;
 
     /** Holds the box data. */
     private Box[] boxData = new Box[boxes];
@@ -56,10 +56,12 @@ class BigBallisticDemo extends RigidBodyApplication {
 
         // Initialise the box
         double z = 20.0f;
+        double y = 10.0f;
         for (int i = 0; i < boxData.length; i++) {
             boxData[i] = new Box();
-            boxData[i].setState(z);
+            boxData[i].setState(y, z);
             z += 10.0f;
+            y += 10.0f;
         }
     }
 
@@ -234,7 +236,7 @@ class BigBallisticDemo extends RigidBodyApplication {
     /** Handle a mouse click. */
     @Override
     public void mouseClicked(java.awt.event.MouseEvent arg0) {
-        update();
+        //update();
         fire();
         glDrawable.display();
     }

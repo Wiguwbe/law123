@@ -159,7 +159,6 @@ class BridgeDemo extends MassAggregateApplication {
     public void display(javax.media.opengl.GLAutoDrawable arg0) {
         update();
         super.display(arg0);
-        System.out.println("asda");
 
         getGl().glBegin(GL.GL_LINES);
         getGl().glColor3f(0, 0, 1);
@@ -206,7 +205,6 @@ class BridgeDemo extends MassAggregateApplication {
     /** Handle a key press. */
     @Override
     public void keyPressed(KeyEvent e) {
-        System.out.println("hehehe");
         switch (e.getKeyChar()) {
             case 's':
             case 'S':

@@ -82,14 +82,14 @@ public class ParticleWorld {
         int limit = maxContacts;
 
         int i = 0;
-        ParticleContact nextContact = contacts[i];
+        //ParticleContact nextContact = contacts[i];
 
         for (ParticleContactGenerator g : contactGenerators) {
-            int used = g.addContact(nextContact, limit);
+            int used = g.addContact(contacts, i, limit);
             limit -= used;
 
             i += used;
-            nextContact = contacts[i];
+            //nextContact = contacts[i];
 
             // We've run out of contacts to fill. This means we're missing
             // contacts.

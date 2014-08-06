@@ -120,7 +120,7 @@ public class Application implements GLEventListener, MouseListener, MouseMotionL
     /**
      * Called just before the application is destroyed. Clear up can
      * be performed here or in the application destructor.
-     * 
+     *  
      * The default implementation does nothing.
      */
     protected void deinit() {

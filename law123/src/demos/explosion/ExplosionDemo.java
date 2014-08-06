@@ -25,7 +25,7 @@ import demos.Show;
 class ExplosionDemo extends RigidBodyApplication {
 
     private Animator animator;
-    private static final int OBJECTS = 5;
+    private static final int OBJECTS = 1;
 
     // Holds a transform matrix for rendering objects
     // reflected in the floor.

@@ -40,7 +40,7 @@ public class ParticleCableConstraint extends ParticleConstraint {
      * to keep the cable from over-extending.
      */
     @Override
-    public int addContact(ParticleContact contact, int limit) {
+    public int addContact(ParticleContact[] contacts, int offset, int limit) {
         // Find the length of the cable
         double length = currentLength();
 
@@ -48,6 +48,8 @@ public class ParticleCableConstraint extends ParticleConstraint {
         if (length < maxLength) {
             return 0;
         }
+
+        ParticleContact contact = contacts[offset];
 
         // Otherwise return the contact
         contact.getParticle()[0] = particle;

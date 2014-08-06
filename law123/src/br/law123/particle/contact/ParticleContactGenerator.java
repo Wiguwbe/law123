@@ -13,5 +13,5 @@ public interface ParticleContactGenerator {
      * written to. The method returns the number of contacts that have been
      * written.
      */
-    int addContact(ParticleContact contact, int limit);
+    int addContact(ParticleContact[] contact, int offset, int limit);
 }

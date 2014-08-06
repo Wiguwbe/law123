@@ -207,7 +207,6 @@ class PlatformDemo extends MassAggregateApplication {
     /** Handle a key press. */
     @Override
     public void keyPressed(KeyEvent e) {
-        System.out.println("ket");
         switch (e.getKeyChar()) {
             case 'w':
             case 'W':

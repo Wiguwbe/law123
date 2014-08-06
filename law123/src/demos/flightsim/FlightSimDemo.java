@@ -187,10 +187,7 @@ public class FlightSimDemo extends Application {
         drawAircraft();
         getGl().glPopMatrix();
 
-        System.out.println(String.format("Altitude: %.1f | Speed %.1f", aircraft.getPosition().getY(), aircraft.getVelocity().magnitude()));
         getGl().glColor3f(0, 0, 0);
-
-        System.out.println(String.format("Left Wing: %.1f | Right Wing: %.1f | Rudder %.1f", left_wing_control, right_wing_control, rudder_control));
     }
 
     /** Update the particle positions. */

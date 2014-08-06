@@ -82,7 +82,7 @@ public class Random {
     /**
      * Returns a random floating point number between 0 and 1.
      */
-    float randomReal() {
+    public float randomReal() {
         return new java.util.Random().nextFloat();
     }
 
@@ -111,7 +111,7 @@ public class Random {
      * Returns a random binomially distributed number between -scale
      * and +scale.
      */
-    float randomBinomial(float scale) {
+    public float randomBinomial(float scale) {
         return (randomReal() - randomReal()) * scale;
     }
 
