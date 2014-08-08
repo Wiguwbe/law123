@@ -138,13 +138,13 @@ public class RigidBody {
      * A body can be put to sleep to avoid it being updated by the integration
      * functions or affected by collisions with the world.
      */
-    private boolean isAwake;
+    private boolean isAwake = true;
 
     /**
      * Some bodies may never be allowed to fall asleep. User controlled bodies,
      * for example, should be always awake.
      */
-    private boolean canSleep;
+    private boolean canSleep = true;
 
     /**
      * Holds a transform matrix for converting body space into world space and
@@ -286,6 +286,7 @@ public class RigidBody {
             motion = bias * motion + (1 - bias) * currentMotion;
 
             double sleepEpsilon = Core.get().getSleepEpsilon();
+            System.out.println(motion);
             if (motion < sleepEpsilon) setAwake(false);
             else if (motion > 10 * sleepEpsilon) motion = 10 * sleepEpsilon;
         }

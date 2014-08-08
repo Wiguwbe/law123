@@ -82,7 +82,7 @@ public class CollideUtils {
 
         // Work out which vertex of box two we're colliding with.
         // Using toCentre doesn't work!
-        Vector3 vertex = two.getHalfSize();
+        Vector3 vertex = new Vector3(two.getHalfSize());
         if (two.getAxis(0).mult(normal) < 0) vertex.setX(-vertex.getX());
         if (two.getAxis(1).mult(normal) < 0) vertex.setY(-vertex.getY());
         if (two.getAxis(2).mult(normal) < 0) vertex.setZ(-vertex.getZ());

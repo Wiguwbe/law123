@@ -143,10 +143,10 @@ public class CollisionDetector {
                 // distance and add the vertex location.
                 Contact contact = new Contact();
 
-                contact.setContactPoint(plane.getDirection());
+                contact.setContactPoint(new Vector3(plane.getDirection()));
                 contact.getContactPoint().multToMe(vertexDistance - plane.getOffset());
                 contact.getContactPoint().sumToMe(vertexPos);
-                contact.setContactNormal(plane.getDirection());
+                contact.setContactNormal(new Vector3(plane.getDirection()));
                 contact.setPenetration(plane.getOffset() - vertexDistance);
 
                 // Write the appropriate data
@@ -230,8 +230,8 @@ public class CollisionDetector {
             // its component in the direction of the box's collision axis is zero
             // (its a mid-point) and we determine which of the extremes in each
             // of the other axes is closest.
-            Vector3 ptOnOneEdge = one.getHalfSize();
-            Vector3 ptOnTwoEdge = two.getHalfSize();
+            Vector3 ptOnOneEdge = new Vector3(one.getHalfSize());
+            Vector3 ptOnTwoEdge = new Vector3(two.getHalfSize());
             for (int i = 0; i < 3; i++) {
                 if (i == oneAxisIndex) ptOnOneEdge.set(i, 0);
                 else if (one.getAxis(i).mult(axis) > 0) ptOnOneEdge.set(i, -ptOnOneEdge.get(i));

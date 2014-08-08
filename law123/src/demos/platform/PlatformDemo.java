@@ -77,9 +77,6 @@ class PlatformDemo extends MassAggregateApplication {
         super(6);
         massPos = new Vector3(0, 0, 0.5f);
 
-        for (int i = 0; i < 6; i++) {
-            particleArray[0] = new Particle();
-        }
         // Create the masses and connections.
         particleArray[0].setPosition(0, 0, 1);
         particleArray[1].setPosition(0, 0, -1);
