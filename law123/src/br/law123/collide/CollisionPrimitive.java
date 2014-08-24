@@ -7,7 +7,7 @@ import br.law123.rigidbody.RigidBody;
 /**
  * Represents a primitive to detect collisions against.
  */
-class CollisionPrimitive {
+public class CollisionPrimitive {
 
     /**
      * The rigid body that is represented by this primitive.
