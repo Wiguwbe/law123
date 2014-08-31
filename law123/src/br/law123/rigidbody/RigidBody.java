@@ -286,7 +286,6 @@ public class RigidBody {
             motion = bias * motion + (1 - bias) * currentMotion;
 
             double sleepEpsilon = Core.get().getSleepEpsilon();
-            System.out.println(motion);
             if (motion < sleepEpsilon) setAwake(false);
             else if (motion > 10 * sleepEpsilon) motion = 10 * sleepEpsilon;
         }
