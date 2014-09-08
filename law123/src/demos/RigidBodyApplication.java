@@ -7,7 +7,6 @@ import javax.media.opengl.GLAutoDrawable;
 
 import br.law123.collide.CollisionData;
 import br.law123.core.Vector3;
-import br.law123.rigidbody.contact.Contact;
 import br.law123.rigidbody.contact.ContactResolver;
 
 /**
@@ -20,11 +19,8 @@ public abstract class RigidBodyApplication extends Application {
     /** Holds the maximum number of contacts. */
     protected static final int maxContacts = 256;
 
-    /** Holds the array of contacts. */
-    private Contact[] contacts = new Contact[maxContacts];
-
     /** Holds the collision data structure for collision detection. */
-    private CollisionData cData = new CollisionData();
+    private final CollisionData cData;
 
     /** Holds the contact resolver. */
     private ContactResolver resolver;
@@ -68,18 +64,18 @@ public abstract class RigidBodyApplication extends Application {
 
         // Render the contacts, if required
         gl.glBegin(GL.GL_LINES);
-        for (int i = 0; i < cData.getContactCount(); i++) {
+        for (int i = 0; i < cData.getContacts().size(); i++) {
             // Interbody contacts are in green, floor contacts are red.
-            if (contacts[i].getBody()[1] != null) {
+            if (cData.getContacts().get(i).getBody()[1] != null) {
                 gl.glColor3f(0, 1, 0);
             } else {
                 gl.glColor3f(1, 0, 0);
             }
 
-            Vector3 vec = contacts[i].getContactPoint();
+            Vector3 vec = cData.getContacts().get(i).getContactPoint();
             gl.glVertex3d(vec.getX(), vec.getY(), vec.getZ());
 
-            vec.sumToMe(contacts[i].getContactNormal());
+            vec.sumToMe(cData.getContacts().get(i).getContactNormal());
             gl.glVertex3d(vec.getX(), vec.getY(), vec.getZ());
         }
 
@@ -89,7 +85,7 @@ public abstract class RigidBodyApplication extends Application {
     /**
      * Creates a new application object.
      */
-    public RigidBodyApplication() {
+    public RigidBodyApplication(CollisionData data) {
         this.theta = 0.0f;
         this.phi = 15.0f;
         this.resolver = new ContactResolver(maxContacts * 8);
@@ -97,7 +93,7 @@ public abstract class RigidBodyApplication extends Application {
         this.renderDebugInfo = false;
         this.pauseSimulation = true;
         this.autoPauseSimulation = false;
-        cData.setContactArray(contacts);
+        this.cData = data;
     }
 
     /** Display the application. */
@@ -137,7 +133,7 @@ public abstract class RigidBodyApplication extends Application {
         generateContacts();
 
         // Resolve detected contacts
-        resolver.resolveContacts(cData.getContactArray(), cData.getContactCount(), duration);
+        resolver.resolveContacts(cData.getContacts(), duration);
 
         super.update();
     }

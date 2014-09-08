@@ -246,7 +246,7 @@ public class RigidBody {
         if (!isAwake) return;
 
         // Calculate linear acceleration from force inputs.
-        lastFrameAcceleration = acceleration;
+        lastFrameAcceleration = new Vector3(acceleration);
         lastFrameAcceleration.addScaledVector(forceAccum, inverseMass);
 
         // Calculate angular acceleration from torque inputs.
@@ -1235,6 +1235,31 @@ public class RigidBody {
         destin.setI(origin.getI());
         destin.setJ(origin.getJ());
         destin.setK(origin.getK());
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+
+        sb.append("InverseMass: ").append(inverseMass).append("\n");
+        sb.append("InverseInertiaTensor: ").append(inverseInertiaTensor).append("\n");
+        sb.append("LinearDamping: ").append(linearDamping).append("\n");
+        sb.append("AngularDamping: ").append(angularDamping).append("\n");
+        sb.append("Position: ").append(position).append("\n");
+        sb.append("Orientation: ").append(orientation).append("\n");
+        sb.append("Velocity: ").append(velocity).append("\n");
+        sb.append("Rotation: ").append(rotation).append("\n");
+        sb.append("InverseInertiaTensorWorld: ").append(inverseInertiaTensorWorld).append("\n");
+        sb.append("Motion: ").append(motion).append("\n");
+        sb.append("IsAwake: ").append(isAwake).append("\n");
+        sb.append("CanSleep: ").append(canSleep).append("\n");
+        sb.append("TransformMatrix: ").append(transformMatrix).append("\n");
+        sb.append("ForceAccum: ").append(forceAccum).append("\n");
+        sb.append("TorqueAccum: ").append(torqueAccum).append("\n");
+        sb.append("Acceleration: ").append(acceleration).append("\n");
+        sb.append("LastFrameAcceleration: ").append(lastFrameAcceleration).append("\n");
+
+        return sb.toString();
     }
 
 }

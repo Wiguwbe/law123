@@ -5,6 +5,7 @@ import java.awt.event.KeyEvent;
 import javax.media.opengl.GL;
 import javax.media.opengl.GLAutoDrawable;
 
+import br.law123.collide.CollisionData;
 import br.law123.collide.CollisionDetector;
 import br.law123.collide.CollisionPlane;
 import br.law123.core.Vector3;
@@ -37,7 +38,7 @@ class BigBallisticDemo extends RigidBodyApplication {
     /**
      * Holds the number of boxes in the simulation.
      */
-    private final static int boxes = 200;
+    private final static int boxes = 1;
 
     /** Holds the box data. */
     private Box[] boxData = new Box[boxes];
@@ -72,12 +73,6 @@ class BigBallisticDemo extends RigidBodyApplication {
         CollisionPlane plane = new CollisionPlane();
         plane.setDirection(new Vector3(0, 1, 0));
         plane.setOffset(0);
-
-        // Set up the collision data structure
-        getcData().reset(maxContacts);
-        getcData().setFriction(0.9);
-        getcData().setRestitution(0.1);
-        getcData().setTolerance(0.1);
 
         // Check ground plane collisions
         for (Box box : boxData) {
@@ -151,6 +146,8 @@ class BigBallisticDemo extends RigidBodyApplication {
 
     /** Creates a new demo object. */
     public BigBallisticDemo() {
+        // Set up the collision data structure
+        super(new CollisionData(0.9, 0.1, 0.1, maxContacts));
         this.currentShotType = ShotType.LASER;
         setPauseSimulation(false);
         reset();

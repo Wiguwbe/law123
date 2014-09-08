@@ -6,6 +6,7 @@ import java.awt.event.MouseEvent;
 import javax.media.opengl.GL;
 import javax.media.opengl.GLAutoDrawable;
 
+import br.law123.collide.CollisionData;
 import br.law123.collide.CollisionDetector;
 import br.law123.collide.CollisionPlane;
 import br.law123.collide.IntersectionTests;
@@ -25,7 +26,7 @@ import demos.Show;
 class ExplosionDemo extends RigidBodyApplication {
 
     private Animator animator;
-    private static final int OBJECTS = 10;
+    private static final int OBJECTS = 1;
 
     // Holds a transform matrix for rendering objects
     // reflected in the floor.
@@ -167,8 +168,7 @@ class ExplosionDemo extends RigidBodyApplication {
             ball.random(random);
         }
 
-        // Reset the contacts
-        getcData().setContactCount(0);
+        getcData().getContacts().clear();
     }
 
     /** Processes the contact generation code. */
@@ -182,12 +182,6 @@ class ExplosionDemo extends RigidBodyApplication {
         CollisionPlane plane = new CollisionPlane();
         plane.setDirection(new Vector3(0, 1, 0));
         plane.setOffset(0);
-
-        // Set up the collision data structure
-        getcData().reset(maxContacts);
-        getcData().setFriction(0.9);
-        getcData().setRestitution(0.6);
-        getcData().setTolerance(0.1);
 
         // Perform exhaustive collision detection
         Matrix4 transform = new Matrix4();
@@ -263,7 +257,8 @@ class ExplosionDemo extends RigidBodyApplication {
 
     /** Creates a new demo object. */
     ExplosionDemo() {
-        super();
+        // Set up the collision data structure
+        super(new CollisionData(0.9, 0.6, 0.1, maxContacts));
         editMode = false;
         upMode = false;
 

@@ -18,7 +18,7 @@ public class CollisionDetector {
 
     public static int sphereAndHalfSpace(CollisionSphere sphere, CollisionPlane plane, CollisionData data) {
         // Make sure we have contacts
-        if (data.getContactsLeft() <= 0) return 0;
+        if (!data.hasMoreContacts()) return 0;
 
         // Cache the sphere position
         Vector3 position = sphere.getAxis(3);
@@ -35,13 +35,13 @@ public class CollisionDetector {
         contact.setContactPoint(position.sub(plane.getDirection().mult(ballDistance + sphere.getRadius())));
         contact.setBodyData(sphere.getBody(), null, data.getFriction(), data.getRestitution());
 
-        data.addContacts(contact);
+        data.addContact(contact);
         return 1;
     }
 
     public static int sphereAndTruePlane(CollisionSphere sphere, CollisionPlane plane, CollisionData data) {
         // Make sure we have contacts
-        if (data.getContactsLeft() <= 0) return 0;
+        if (!data.hasMoreContacts()) return 0;
 
         // Cache the sphere position
         Vector3 position = sphere.getAxis(3);
@@ -70,13 +70,13 @@ public class CollisionDetector {
         contact.setContactPoint(position.sub(plane.getDirection().mult(centreDistance)));
         contact.setBodyData(sphere.getBody(), null, data.getFriction(), data.getRestitution());
 
-        data.addContacts(contact);
+        data.addContact(contact);
         return 1;
     }
 
     public static int sphereAndSphere(CollisionSphere one, CollisionSphere two, CollisionData data) {
         // Make sure we have contacts
-        if (data.getContactsLeft() <= 0) return 0;
+        if (!data.hasMoreContacts()) return 0;
 
         // Cache the sphere positions
         Vector3 positionOne = one.getAxis(3);
@@ -101,7 +101,7 @@ public class CollisionDetector {
         contact.setPenetration(one.getRadius() + two.getRadius() - size);
         contact.setBodyData(one.getBody(), two.getBody(), data.getFriction(), data.getRestitution());
 
-        data.addContacts(contact);
+        data.addContact(contact);
         return 1;
     }
 
@@ -112,7 +112,7 @@ public class CollisionDetector {
      */
     public static int boxAndHalfSpace(CollisionBox box, CollisionPlane plane, CollisionData data) {
         // Make sure we have contacts
-        if (data.getContactsLeft() <= 0) return 0;
+        if (!data.hasMoreContacts()) return 0;
 
         // Check for intersection
         if (!IntersectionTests.boxAndHalfSpace(box, plane)) {
@@ -153,9 +153,9 @@ public class CollisionDetector {
                 contact.setBodyData(box.getBody(), null, data.getFriction(), data.getRestitution());
 
                 // Move onto the next contact
-                data.addContacts(contact);
+                data.addContact(contact);
                 contactsUsed++;
-                if (data.getContactsLeft() <= 0) return contactsUsed;
+                if (!data.hasMoreContacts()) return contactsUsed;
             }
         }
 
@@ -201,7 +201,7 @@ public class CollisionDetector {
         if (((Integer) best.get()) < 3) {
             // We've got a vertex of box two on a face of box one.
             Contact contact = CollideUtils.fillPointFaceBoxBox(one, two, toCentre, data, (Integer) best.get(), (Double) pen.get());
-            data.addContacts(contact);
+            data.addContact(contact);
             return 1;
         } else if (((Integer) best.get()) < 6) {
             // We've got a vertex of box one on a face of box two.
@@ -209,7 +209,7 @@ public class CollisionDetector {
             // one and two (and therefore also the vector between their
             // centres).
             Contact contact = CollideUtils.fillPointFaceBoxBox(two, one, toCentre.mult(-1.0f), data, ((Integer) best.get()) - 3, (Double) pen.get());
-            data.addContacts(contact);
+            data.addContact(contact);
             return 1;
         } else {
             // We've got an edge-edge contact. Find out which axes
@@ -257,7 +257,7 @@ public class CollisionDetector {
             contact.setContactNormal(axis);
             contact.setContactPoint(vertex);
             contact.setBodyData(one.getBody(), two.getBody(), data.getFriction(), data.getRestitution());
-            data.addContacts(contact);
+            data.addContact(contact);
             return 1;
         }
     }
@@ -299,7 +299,7 @@ public class CollisionDetector {
         // this value can be left, or filled in.
         contact.setBodyData(box.getBody(), null, data.getFriction(), data.getRestitution());
 
-        data.addContacts(contact);
+        data.addContact(contact);
         return 1;
     }
 
@@ -346,7 +346,7 @@ public class CollisionDetector {
         contact.setPenetration(sphere.getRadius() - Math.sqrt(dist));
         contact.setBodyData(box.getBody(), sphere.getBody(), data.getFriction(), data.getRestitution());
 
-        data.addContacts(contact);
+        data.addContact(contact);
         return true;
     }
 

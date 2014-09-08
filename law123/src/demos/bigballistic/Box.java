@@ -34,7 +34,7 @@ class Box extends CollisionBox {
         getBody().setPosition(0, y, z);
         getBody().setOrientation(1, 0, 0, 0);
         getBody().setVelocity(0, 0, 0);
-        getBody().setRotation(new Vector3(0, 0, 0));
+        getBody().setRotation(new Vector3(1, 0, 0));
         setHalfSize(new Vector3(1, 1, 1));
 
         double mass = getHalfSize().getX() * getHalfSize().getY() * getHalfSize().getZ() * 8.0f;
