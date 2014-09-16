@@ -7,13 +7,13 @@ import br.law123.rigidbody.contact.Contact;
 
 public class CollisionData {
 
-    private final List<Contact> contacts = new ArrayList<Contact>();
+    private List<Contact> contacts = new ArrayList<Contact>();
 
     private final double friction;
     private final double restitution;
     private final double tolerance;
 
-    private final int maxContacts;
+    private int maxContacts;
 
     public CollisionData(double friction, double restitution, double tolerance, int maxContacts) {
         this.friction = friction;
@@ -44,5 +44,10 @@ public class CollisionData {
 
     void addContact(Contact c) {
         contacts.add(c);
+    }
+
+    public void reset(int maxContact) {
+        this.maxContacts = maxContact;
+        this.contacts = new ArrayList<Contact>();
     }
 }
