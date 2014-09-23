@@ -194,6 +194,15 @@ public class ContactResolver {
 
         // Resolve the velocity problems with the contacts.
         adjustVelocities(contacts, numContacts, duration);
+
+        warningContact(contacts, numContacts, duration);
+    }
+
+    private void warningContact(Contact[] contacts, int numContacts, double duration) {
+
+        for (int i = 0; i < numContacts; i++) {
+            contacts[i].warningContact(duration);
+        }
     }
 
     /**

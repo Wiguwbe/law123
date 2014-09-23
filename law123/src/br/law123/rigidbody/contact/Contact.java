@@ -1,5 +1,10 @@
 package br.law123.rigidbody.contact;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import br.law123.collide.CollisionSphere;
+import br.law123.collide.CollistionDetectionListener;
 import br.law123.core.Matrix3;
 import br.law123.core.Quaternion;
 import br.law123.core.Vector3;
@@ -41,6 +46,8 @@ public class Contact {
      * second of these can be NULL, for contacts with the scenery.
      */
     private RigidBody[] body = new RigidBody[2];
+
+    private List<CollistionDetectionListener> listeners = new ArrayList<CollistionDetectionListener>();
 
     /**
      * Holds the lateral friction coefficient at the contact.
@@ -616,6 +623,17 @@ public class Contact {
             impulseContact.setZ(impulseContact.getZ() * friction * impulseContact.getX());
         }
         return impulseContact;
+    }
+
+    public void warningContact(double duration) {
+        for (CollistionDetectionListener l : listeners) {
+            l.collisionDetection(duration);
+        }
+        listeners.clear();
+    }
+
+    public void addCollisionDetectionBody(CollisionSphere sphere) {
+        listeners.add(sphere);
     }
 
 }

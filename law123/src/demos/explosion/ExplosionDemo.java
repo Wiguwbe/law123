@@ -25,7 +25,7 @@ import demos.Show;
 class ExplosionDemo extends RigidBodyApplication {
 
     private Animator animator;
-    private static final int OBJECTS = 10;
+    private static final int OBJECTS = 1;
 
     // Holds a transform matrix for rendering objects
     // reflected in the floor.
@@ -36,7 +36,7 @@ class ExplosionDemo extends RigidBodyApplication {
     /**
      * Holds the number of boxes in the simulation.
      */
-    private static final int boxes = OBJECTS;
+    private static final int boxes = 0;
 
     /** Holds the box data. */
     private Box[] boxData = new Box[boxes];
@@ -151,7 +151,9 @@ class ExplosionDemo extends RigidBodyApplication {
     @Override
     protected void reset() {
         int k = 0;
-        boxData[k++].setState(new Vector3(0, 3, 0), new Quaternion(), new Vector3(4, 1, 1), new Vector3(0, 1, 0));
+        if (boxes >0) {
+            boxData[k++].setState(new Vector3(0, 3, 0), new Quaternion(), new Vector3(4, 1, 1), new Vector3(0, 1, 0));
+        }
 
         if (boxes > 1) {
             boxData[k++].setState(new Vector3(0, 4.75, 2), new Quaternion(1.0, 0.1, 0.05, 0.01), new Vector3(1, 1, 4), new Vector3(0, 1, 0));
@@ -186,7 +188,7 @@ class ExplosionDemo extends RigidBodyApplication {
         // Set up the collision data structure
         getcData().reset(maxContacts);
         getcData().setFriction(0.9);
-        getcData().setRestitution(0.6);
+        getcData().setRestitution(1.0);
         getcData().setTolerance(0.1);
 
         // Perform exhaustive collision detection

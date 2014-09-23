@@ -36,6 +36,8 @@ public class CollisionDetector {
         contact.setBodyData(sphere.getBody(), null, data.getFriction(), data.getRestitution());
 
         data.addContacts(contact);
+
+        contact.addCollisionDetectionBody(sphere);
         return 1;
     }
 

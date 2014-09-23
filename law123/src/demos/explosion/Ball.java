@@ -57,7 +57,7 @@ class Ball extends CollisionSphere {
         getBody().setPosition(position);
         getBody().setOrientation(orientation);
         getBody().setVelocity(velocity);
-        getBody().setRotation(new Vector3(0, 0, 0));
+        getBody().setRotation(new Vector3(20, -10, 0));
         setRadius(d);
 
         float mass = 4.0f * 0.3333f * 3.1415f * d * d * d;
@@ -83,4 +83,11 @@ class Ball extends CollisionSphere {
     void random(Random random) {
         setState(random.randomVector(minPos, maxPos), random.randomQuaternion(), random.randomReal(0.5f, 1.5f), new Vector3());
     }
+    
+    @Override
+    public void collisionDetection(double duration) {
+        Vector3 rotation = getBody().getRotation();
+        getBody().setRotation(rotation.getX() * -1, rotation.getY() * -1, rotation.getZ() * -1);
+    }
+
 }

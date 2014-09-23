@@ -20,7 +20,7 @@ import demos.Show;
 /**
  * The main demo class definition.
  */
-class BridgeDemo extends MassAggregateApplication {
+class MeshDemo extends MassAggregateApplication {
 
     private Animator animator;
 
@@ -39,14 +39,14 @@ class BridgeDemo extends MassAggregateApplication {
     Vector3 massDisplayPos = new Vector3();
 
     /** Creates a new demo object. */
-    public BridgeDemo() {
-        super(12);
+    public MeshDemo() {
+        super(SUPPORT_COUNT);
         //cables(0), supports(0), rods(0),
         massPos = new Vector3(0, 0, 0.5f);
         // Create the masses and connections.
-        for (int i = 0; i < 12; i++) {
+        for (int i = 0; i < SUPPORT_COUNT; i++) {
             int x = (i % 12) / 2;
-            particleArray[i].setPosition((i / 2) * 2.0f - 5.0f, 4, (i % 2) * 2.0f - 1.0f);
+            particleArray[i].setPosition((i / 2) * 2.0f - 5.0f, 1, (i % 2) * 2.0f - 1.0f);
             particleArray[i].setVelocity(0, 0, 0);
             particleArray[i].setDamping(0.9f);
             particleArray[i].setAcceleration(Core.GRAVITY);
@@ -55,7 +55,7 @@ class BridgeDemo extends MassAggregateApplication {
 
         // Add the links
         cables = new ParticleCable[CABLE_COUNT];
-        for (int i = 0; i < 10; i++) {
+        for (int i = 0; i < CABLE_COUNT; i++) {
             cables[i] = new ParticleCable();
             cables[i].getParticle()[0] = particleArray[i];
             cables[i].getParticle()[1] = particleArray[i + 2];
@@ -76,7 +76,7 @@ class BridgeDemo extends MassAggregateApplication {
         }
 
         rods = new ParticleRod[ROD_COUNT];
-        for (int i = 0; i < 6; i++) {
+        for (int i = 0; i < ROD_COUNT; i++) {
             rods[i] = new ParticleRod();
             rods[i].getParticle()[0] = particleArray[i * 2];
             rods[i].getParticle()[1] = particleArray[i * 2 + 1];
@@ -99,7 +99,7 @@ class BridgeDemo extends MassAggregateApplication {
      * that's crossing the bridge.
      */
     void updateAdditionalMass() {
-        for (int i = 0; i < 12; i++) {
+        for (int i = 0; i < SUPPORT_COUNT; i++) {
             particleArray[i].setMass(BASE_MASS);
         }
 
@@ -233,7 +233,7 @@ class BridgeDemo extends MassAggregateApplication {
     }
 
     public static void main(String[] args) {
-        new Show(new BridgeDemo()).setVisible(true);
+        new Show(new MeshDemo()).setVisible(true);
     }
 
 }
