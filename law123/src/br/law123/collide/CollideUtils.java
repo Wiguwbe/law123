@@ -1,11 +1,12 @@
 package br.law123.collide;
 
+import br.law123.collide.util.BoxCollisor;
 import br.law123.core.Vector3;
 import br.law123.rigidbody.contact.Contact;
 
 public class CollideUtils {
 
-    public static double transformToAxis(CollisionBox box, Vector3 axis) {
+    public static <B extends CollisionPrimitive & BoxCollisor> double transformToAxis(B box, Vector3 axis) {
         return box.getHalfSize().getX() * Math.abs(axis.mult(box.getAxis(0))) //
                + box.getHalfSize().getY() * Math.abs(axis.mult(box.getAxis(1))) //
                + box.getHalfSize().getZ() * Math.abs(axis.mult(box.getAxis(2)));

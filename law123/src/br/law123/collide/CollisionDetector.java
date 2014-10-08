@@ -1,5 +1,8 @@
 package br.law123.collide;
 
+import br.law123.collide.util.BoxCollisor;
+import br.law123.collide.util.PlaneCollisor;
+import br.law123.collide.util.SphereCollisor;
 import br.law123.core.Vector3;
 import br.law123.rigidbody.contact.Contact;
 
@@ -16,7 +19,7 @@ public class CollisionDetector {
     // Go through each combination of + and - for each half-size
     public static double mults[][] = { { 1, 1, 1 }, { -1, 1, 1 }, { 1, -1, 1 }, { -1, -1, 1 }, { 1, 1, -1 }, { -1, 1, -1 }, { 1, -1, -1 }, { -1, -1, -1 } };
 
-    public static int sphereAndHalfSpace(CollisionSphere sphere, CollisionPlane plane, CollisionData data) {
+    public static <C extends CollisionPrimitive & SphereCollisor> int sphereAndHalfSpace(C sphere, PlaneCollisor plane, CollisionData data) {
         // Make sure we have contacts
         if (!data.hasMoreContacts()) return 0;
 
@@ -39,7 +42,7 @@ public class CollisionDetector {
         return 1;
     }
 
-    public static int sphereAndTruePlane(CollisionSphere sphere, CollisionPlane plane, CollisionData data) {
+    public static <C extends CollisionPrimitive & SphereCollisor> int sphereAndTruePlane(C sphere, CollisionPlane plane, CollisionData data) {
         // Make sure we have contacts
         if (!data.hasMoreContacts()) return 0;
 
@@ -110,7 +113,7 @@ public class CollisionDetector {
      * a half-space (i.e. the normal of the plane
      * points out of the half-space).
      */
-    public static int boxAndHalfSpace(CollisionBox box, CollisionPlane plane, CollisionData data) {
+    public static <B extends CollisionPrimitive & BoxCollisor, P extends PlaneCollisor> int boxAndHalfSpace(B box, P plane, CollisionData data) {
         // Make sure we have contacts
         if (!data.hasMoreContacts()) return 0;
 

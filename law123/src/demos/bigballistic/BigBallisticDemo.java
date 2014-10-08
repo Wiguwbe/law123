@@ -115,7 +115,7 @@ class BigBallisticDemo extends RigidBodyApplication {
                 }
             }
         }
-
+        System.out.println(duration);
         // Update the boxes
         for (Box box : boxData) {
             // Run the physics

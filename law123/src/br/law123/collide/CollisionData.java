@@ -7,6 +7,8 @@ import br.law123.rigidbody.contact.Contact;
 
 public class CollisionData {
 
+    private final String id;
+
     private List<Contact> contacts = new ArrayList<Contact>();
 
     private final double friction;
@@ -16,10 +18,19 @@ public class CollisionData {
     private int maxContacts;
 
     public CollisionData(double friction, double restitution, double tolerance, int maxContacts) {
+        this("default", friction, restitution, tolerance, maxContacts);
+    }
+
+    public CollisionData(String id, double friction, double restitution, double tolerance, int maxContacts) {
+        this.id = id;
         this.friction = friction;
         this.restitution = restitution;
         this.maxContacts = maxContacts;
         this.tolerance = tolerance;
+    }
+
+    public String getId() {
+        return id;
     }
 
     public List<Contact> getContacts() {

@@ -1,5 +1,7 @@
 package br.law123.collide;
 
+import br.law123.collide.util.BoxCollisor;
+import br.law123.collide.util.PlaneCollisor;
 import br.law123.core.Vector3;
 
 /**
@@ -63,7 +65,7 @@ public class IntersectionTests {
      * offset of the limiting plane from the origin, along the given
      * direction.
      */
-    public static boolean boxAndHalfSpace(CollisionBox box, CollisionPlane plane) {
+    public static <B extends CollisionPrimitive & BoxCollisor, P extends PlaneCollisor> boolean boxAndHalfSpace(B box, P plane) {
         // Work out the projected radius of the box onto the plane direction
         double projectedRadius = CollideUtils.transformToAxis(box, plane.getDirection());
 
