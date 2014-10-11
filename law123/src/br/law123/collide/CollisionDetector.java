@@ -77,7 +77,7 @@ public class CollisionDetector {
         return 1;
     }
 
-    public static int sphereAndSphere(CollisionSphere one, CollisionSphere two, CollisionData data) {
+    public static <C extends CollisionPrimitive & SphereCollisor> int sphereAndSphere(C one, C two, CollisionData data) {
         // Make sure we have contacts
         if (!data.hasMoreContacts()) return 0;
 
@@ -165,7 +165,7 @@ public class CollisionDetector {
         return contactsUsed;
     }
 
-    public static int boxAndBox(CollisionBox one, CollisionBox two, CollisionData data) {
+    public static <B extends CollisionPrimitive & BoxCollisor> int boxAndBox(B one, B two, CollisionData data) {
         //if (!IntersectionTests::boxAndBox(one, two)) return 0;
 
         // Find the vector between the two centres
@@ -265,7 +265,7 @@ public class CollisionDetector {
         }
     }
 
-    public static int boxAndPoint(CollisionBox box, Vector3 point, CollisionData data) {
+    public static <B extends CollisionPrimitive & BoxCollisor> int boxAndPoint(B box, Vector3 point, CollisionData data) {
         // Transform the point into box coordinates
         Vector3 relPt = box.getTransform().transformInverse(point);
 
@@ -306,7 +306,7 @@ public class CollisionDetector {
         return 1;
     }
 
-    public static boolean boxAndSphere(CollisionBox box, CollisionSphere sphere, CollisionData data) {
+    public static <B extends CollisionPrimitive & BoxCollisor, C extends CollisionPrimitive & SphereCollisor> boolean boxAndSphere(B box, C sphere, CollisionData data) {
         // Transform the centre of the sphere into box coordinates
         Vector3 centre = sphere.getAxis(3);
         Vector3 relCentre = box.getTransform().transformInverse(centre);

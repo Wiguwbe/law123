@@ -37,7 +37,7 @@ public class CollideUtils {
      * is used to pass in the vector between the boxes centre
      * points, to avoid having to recalculate it each time.
      */
-    public static double penetrationOnAxis(CollisionBox one, CollisionBox two, Vector3 axis, Vector3 toCentre) {
+    public static <B extends CollisionPrimitive & BoxCollisor> double penetrationOnAxis(B one, B two, Vector3 axis, Vector3 toCentre) {
         // Project the half-size of one onto axis
         double oneProject = transformToAxis(one, axis);
         double twoProject = transformToAxis(two, axis);
@@ -50,7 +50,7 @@ public class CollideUtils {
         return oneProject + twoProject - distance;
     }
 
-    public static boolean tryAxis(CollisionBox one, CollisionBox two, Vector3 axis, Vector3 toCentre, int index,
+    public static <B extends CollisionPrimitive & BoxCollisor> boolean tryAxis(B one, B two, Vector3 axis, Vector3 toCentre, int index,
 
     // These values may be updated
     NumberReference smallestPenetration, NumberReference smallestCase) {
@@ -68,7 +68,7 @@ public class CollideUtils {
         return true;
     }
 
-    static Contact fillPointFaceBoxBox(CollisionBox one, CollisionBox two, Vector3 toCentre, CollisionData data, int best, double pen) {
+    static <B extends CollisionPrimitive & BoxCollisor> Contact fillPointFaceBoxBox(B one, B two, Vector3 toCentre, CollisionData data, int best, double pen) {
         // This method is called when we know that a vertex from
         // box two is in contact with box one.
 
