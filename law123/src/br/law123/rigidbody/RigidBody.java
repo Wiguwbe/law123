@@ -21,7 +21,7 @@ import br.law123.core.Vector3;
  * 64 words in memory. Of this total 15 words are padding, distributed among the
  * Vector3 data members.
  */
-public class RigidBody {
+public class RigidBody implements Cloneable {
 
     /**
      * @name Characteristic Data and State
@@ -191,7 +191,7 @@ public class RigidBody {
     /**
      * Holds the linear acceleration of the rigid body, for the previous frame.
      */
-    private Vector3 lastFrameAcceleration;
+    private Vector3 lastFrameAcceleration = new Vector3();
 
     /* @} */
 
@@ -1260,6 +1260,36 @@ public class RigidBody {
         sb.append("LastFrameAcceleration: ").append(lastFrameAcceleration).append("\n");
 
         return sb.toString();
+    }
+
+    @Override
+    public Object clone() throws CloneNotSupportedException {
+        RigidBody rb = new RigidBody();
+
+        rb.setInverseMass(inverseMass);
+        rb.setInverseInertiaTensor(new Matrix3(inverseInertiaTensor));
+        rb.setLinearDamping(linearDamping);
+        rb.setAngularDamping(angularDamping);
+        rb.setPosition(new Vector3(position));
+        rb.setOrientation(new Quaternion(orientation));
+        rb.setVelocity(new Vector3(velocity));
+        rb.setRotation(new Vector3(rotation));
+        rb.inverseInertiaTensorWorld = new Matrix3(inverseInertiaTensorWorld);
+
+        rb.motion = motion;
+        rb.setAwake(isAwake);
+        rb.setCanSleep(canSleep);
+
+        rb.transformMatrix = new Matrix4();
+        rb.transformMatrix.setData(transformMatrix.getData());
+
+        rb.forceAccum = new Vector3(forceAccum);
+        rb.torqueAccum = new Vector3(torqueAccum);
+        rb.setAcceleration(new Vector3(acceleration));
+
+        rb.lastFrameAcceleration = new Vector3(lastFrameAcceleration);
+
+        return rb;
     }
 
 }

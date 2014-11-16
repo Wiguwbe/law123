@@ -261,7 +261,7 @@ public class Contact {
         velocity.sumToMe(thisBody.getVelocity());
 
         // Turn the velocity into contact-coordinates.
-        Vector3 contactVelocity = contactToWorld.transformTranspose(velocity);
+        Vector3 _contactVelocity = contactToWorld.transformTranspose(velocity);
 
         // Calculate the ammount of velocity that is due to forces without
         // reactions.
@@ -276,10 +276,10 @@ public class Contact {
 
         // Add the planar velocities - if there's enough friction they will
         // be removed during velocity resolution
-        contactVelocity.sumToMe(accVelocity);
+        _contactVelocity.sumToMe(accVelocity);
 
         // And return it
-        return contactVelocity;
+        return _contactVelocity;
     }
 
     /**
