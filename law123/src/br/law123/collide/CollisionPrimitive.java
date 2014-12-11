@@ -3,11 +3,12 @@ package br.law123.collide;
 import br.law123.core.Matrix4;
 import br.law123.core.Vector3;
 import br.law123.rigidbody.RigidBody;
+import br.law123.rigidbody.contact.Contact;
 
 /**
  * Represents a primitive to detect collisions against.
  */
-public class CollisionPrimitive {
+public class CollisionPrimitive implements ContactListener {
 
     /**
      * The rigid body that is represented by this primitive.
@@ -57,5 +58,10 @@ public class CollisionPrimitive {
      */
     public Matrix4 getTransform() {
         return transform;
+    }
+
+    @Override
+    public void bindContact(Contact contact) {
+        //do nothing
     }
 }

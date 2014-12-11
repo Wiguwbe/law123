@@ -16,6 +16,7 @@ public class CollisionData {
     private final double tolerance;
 
     private int maxContacts;
+    private int apllyedContacts = 0;
 
     public CollisionData(double friction, double restitution, double tolerance, int maxContacts) {
         this("default", friction, restitution, tolerance, maxContacts);
@@ -33,8 +34,10 @@ public class CollisionData {
         return id;
     }
 
-    public List<Contact> getContacts() {
-        return contacts;
+    public List<Contact> collectContacts() {
+        List<Contact> a = this.contacts;
+        this.contacts = new ArrayList<Contact>();
+        return a;
     }
 
     public double getFriction() {
@@ -50,15 +53,17 @@ public class CollisionData {
     }
 
     public boolean hasMoreContacts() {
-        return contacts.size() < maxContacts;
+        return apllyedContacts < maxContacts;
     }
 
     void addContact(Contact c) {
         contacts.add(c);
+        this.apllyedContacts++;
     }
 
     public void reset(int maxContact) {
         this.maxContacts = maxContact;
         this.contacts = new ArrayList<Contact>();
+        this.apllyedContacts = 0;
     }
 }

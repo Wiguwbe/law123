@@ -64,18 +64,18 @@ public abstract class RigidBodyApplication extends Application {
 
         // Render the contacts, if required
         gl.glBegin(GL.GL_LINES);
-        for (int i = 0; i < cData.getContacts().size(); i++) {
+        for (int i = 0; i < cData.collectContacts().size(); i++) {
             // Interbody contacts are in green, floor contacts are red.
-            if (cData.getContacts().get(i).getBody()[1] != null) {
+            if (cData.collectContacts().get(i).getBody()[1] != null) {
                 gl.glColor3f(0, 1, 0);
             } else {
                 gl.glColor3f(1, 0, 0);
             }
 
-            Vector3 vec = cData.getContacts().get(i).getContactPoint();
+            Vector3 vec = cData.collectContacts().get(i).getContactPoint();
             gl.glVertex3d(vec.getX(), vec.getY(), vec.getZ());
 
-            vec.sumToMe(cData.getContacts().get(i).getContactNormal());
+            vec.sumToMe(cData.collectContacts().get(i).getContactNormal());
             gl.glVertex3d(vec.getX(), vec.getY(), vec.getZ());
         }
 
@@ -133,7 +133,7 @@ public abstract class RigidBodyApplication extends Application {
         generateContacts();
 
         // Resolve detected contacts
-        resolver.resolveContacts(cData.getContacts(), duration);
+        resolver.resolveContacts(cData.collectContacts(), duration);
 
         super.update();
     }

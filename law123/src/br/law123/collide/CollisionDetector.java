@@ -39,6 +39,7 @@ public class CollisionDetector {
         contact.setBodyData(sphere.getBody(), null, data.getFriction(), data.getRestitution());
 
         data.addContact(contact);
+        sphere.bindContact(contact);
         return 1;
     }
 
@@ -74,6 +75,7 @@ public class CollisionDetector {
         contact.setBodyData(sphere.getBody(), null, data.getFriction(), data.getRestitution());
 
         data.addContact(contact);
+        sphere.bindContact(contact);
         return 1;
     }
 
@@ -105,6 +107,7 @@ public class CollisionDetector {
         contact.setBodyData(one.getBody(), two.getBody(), data.getFriction(), data.getRestitution());
 
         data.addContact(contact);
+        one.bindContact(contact);
         return 1;
     }
 
@@ -157,6 +160,8 @@ public class CollisionDetector {
 
                 // Move onto the next contact
                 data.addContact(contact);
+
+                box.bindContact(contact);
                 contactsUsed++;
                 if (!data.hasMoreContacts()) return contactsUsed;
             }
@@ -205,6 +210,7 @@ public class CollisionDetector {
             // We've got a vertex of box two on a face of box one.
             Contact contact = CollideUtils.fillPointFaceBoxBox(one, two, toCentre, data, (Integer) best.get(), (Double) pen.get());
             data.addContact(contact);
+            one.bindContact(contact);
             return 1;
         } else if (((Integer) best.get()) < 6) {
             // We've got a vertex of box one on a face of box two.
@@ -213,6 +219,7 @@ public class CollisionDetector {
             // centres).
             Contact contact = CollideUtils.fillPointFaceBoxBox(two, one, toCentre.mult(-1.0f), data, ((Integer) best.get()) - 3, (Double) pen.get());
             data.addContact(contact);
+            one.bindContact(contact);
             return 1;
         } else {
             // We've got an edge-edge contact. Find out which axes
@@ -261,6 +268,7 @@ public class CollisionDetector {
             contact.setContactPoint(vertex);
             contact.setBodyData(one.getBody(), two.getBody(), data.getFriction(), data.getRestitution());
             data.addContact(contact);
+            one.bindContact(contact);
             return 1;
         }
     }
@@ -303,6 +311,7 @@ public class CollisionDetector {
         contact.setBodyData(box.getBody(), null, data.getFriction(), data.getRestitution());
 
         data.addContact(contact);
+        box.bindContact(contact);
         return 1;
     }
 
@@ -350,6 +359,7 @@ public class CollisionDetector {
         contact.setBodyData(box.getBody(), sphere.getBody(), data.getFriction(), data.getRestitution());
 
         data.addContact(contact);
+        box.bindContact(contact);
         return true;
     }
 
