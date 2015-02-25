@@ -344,10 +344,10 @@ public class Contact {
     protected void applyVelocityChange(Vector3 velocityChange[], Vector3 rotationChange[]) {
         // Get hold of the inverse mass and inverse inertia tensor, both in
         // world coordinates.
-        Matrix3[] inverseInertiaTensor = { new Matrix3(), new Matrix3() };
-        body[0].getInverseInertiaTensorWorld(inverseInertiaTensor[0]);
+        Matrix3[] inverseInertiaTensor = { null, null };
+        inverseInertiaTensor[0] = body[0].getInverseInertiaTensorWorld();
         if (body[1] != null) {
-            body[1].getInverseInertiaTensorWorld(inverseInertiaTensor[1]);
+            inverseInertiaTensor[1] = body[1].getInverseInertiaTensorWorld();
         }
 
         // We will calculate the impulse for each contact axis
@@ -405,8 +405,7 @@ public class Contact {
         // of the contact normal, due to angular inertia only.
         for (int i = 0; i < 2; i++)
             if (body[i] != null) {
-                Matrix3 inverseInertiaTensor = new Matrix3();
-                body[i].getInverseInertiaTensorWorld(inverseInertiaTensor);
+                Matrix3 inverseInertiaTensor = body[i].getInverseInertiaTensorWorld();
 
                 // Use the same procedure as for calculating frictionless
                 // velocity change to work out the angular inertia.
@@ -465,8 +464,7 @@ public class Contact {
                     // Work out the direction we'd like to rotate in.
                     Vector3 targetAngularDirection = relativeContactPosition[i].vectorProduct(contactNormal);
 
-                    Matrix3 inverseInertiaTensor = new Matrix3();
-                    body[i].getInverseInertiaTensorWorld(inverseInertiaTensor);
+                    Matrix3 inverseInertiaTensor = body[i].getInverseInertiaTensorWorld();
 
                     // Work out the direction we'd need to rotate to achieve that
                     angularChange[i] = inverseInertiaTensor.transform(targetAngularDirection).mult(angularMove[i] / angularInertia[i]);
@@ -478,14 +476,12 @@ public class Contact {
 
                 // Now we can start to apply the values we've calculated.
                 // Apply the linear movement
-                Vector3 pos = new Vector3();
-                body[i].getPosition(pos);
+                Vector3 pos = body[i].getPosition();
                 pos.addScaledVector(contactNormal, linearMove[i]);
                 body[i].setPosition(pos);
 
                 // And the change in orientation
-                Quaternion q = new Quaternion();
-                body[i].getOrientation(q);
+                Quaternion q = body[i].getOrientation();
                 q.addScaledVector(angularChange[i], (1.0));
                 body[i].setOrientation(q);
 
