@@ -20,6 +20,13 @@ public class CollisionPlane implements PlaneCollisor {
      */
     private double offset;
 
+    public CollisionPlane() {
+    }
+
+    public CollisionPlane(Vector3 direction) {
+        this.direction = direction;
+    }
+
     public void setDirection(Vector3 direction) {
         this.direction = direction;
     }
