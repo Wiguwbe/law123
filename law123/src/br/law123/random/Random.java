@@ -11,6 +11,8 @@ import br.law123.core.Vector3;
  */
 public class Random {
 
+    static private int init_seed = 0;
+    
     /**
      * left bitwise rotation
      */
@@ -31,7 +33,8 @@ public class Random {
      * timing data.
      */
     public Random() {
-        this(0);
+        this(Random.init_seed);
+        Random.init_seed=(Random.init_seed+666)%2567;
     }
 
     /**
